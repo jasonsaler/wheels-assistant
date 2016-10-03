@@ -1,0 +1,25 @@
+﻿<Application x:Class="WheelsDataAssistant.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WheelsDataAssistant"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <Brush x:Key="AppPrimaryBackgroundColorLight">#e0f2f1</Brush>
+        <Brush x:Key="AppSecondaryBackgroundColorLight">#80cbc4</Brush>
+        <Brush x:Key="AppPrimaryBackgroundColorDark">#363B4E</Brush>
+        <Brush x:Key="AppSecondaryBackgroundColorDark">#212121</Brush>
+        <Brush x:Key="AppPrimaryColor">#2c5989</Brush>
+        <Brush x:Key="AppSecondaryColor">#5d7da0</Brush>
+        <Brush x:Key="AppAccentColor">#00bfc9</Brush>
+        <Brush x:Key="ButtonHighlightColor">#FFFF00</Brush>
+        <Brush x:Key="ButtonPressColor">#FFFbc0</Brush>
+        <Brush x:Key="TextLightColor">#FFFbc0</Brush>
+        <Brush x:Key="TextDarkColor">#FFFbc0</Brush>
+        
+        
+        
+
+
+    </Application.Resources>
+</Application>
