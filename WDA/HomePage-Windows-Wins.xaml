@@ -17,7 +17,7 @@
             Height="60" 
             Margin="0,0,0,0" 
             VerticalAlignment="Top" 
-            Width="{Binding ActualWidth, ElementName=TopBarDesign}"
+            Width="2000" 
             Background="{StaticResource AppPrimaryBackgroundColorDark}"/>
 
         <Image 
@@ -36,7 +36,7 @@
             Margin="0,60,0,0" 
             VerticalAlignment="Top" 
             Background="{DynamicResource AppPrimaryBackgroundColorDark}" 
-            Width="{Binding ActualWidth, ElementName=TopBarDesign}">
+            Width="3000">
 
             <Button 
                 x:Name="fileButton" 
@@ -73,7 +73,7 @@
                     x:Name="newQuestionaireButton" 
                     Style="{StaticResource dropMenuButtonStyle}"
                     Content="New Questionaire" 
-                    Width="165" MouseUp="NewQuestionaireButton_MouseUp"/>
+                    Width="165"/>
                 <Label
                     x:Name="editQuestionaireButton" 
                     Style="{StaticResource dropMenuButtonStyle}"
@@ -109,7 +109,7 @@
         	Margin="70,5,0,0" 
         	VerticalAlignment="Top" 
         	RenderTransformOrigin="-5.174,0.576"/>
-
+        
         <Button 
             x:Name="QuestionaireButton" 
             Style="{StaticResource buttonStyle}" 
@@ -187,7 +187,7 @@
             x:Name="generateSummaryNotificationToast"
             Style="{StaticResource notificationToastStyle}" 
             Visibility="Hidden">
-
+            
             <Label 
                 x:Name="toastLabel" 
                 Style="{StaticResource notificationToastLabelStyle}"
@@ -200,7 +200,7 @@
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Center"
                 Background="{StaticResource AppPrimaryBackgroundColorDark}">
-
+                
                 <Image 
                     x:Name="ToastCloseIcon" 
                     Height="30" 
