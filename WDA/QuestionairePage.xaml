@@ -13,9 +13,10 @@
 
         <Grid 
         	HorizontalAlignment="Left" 
-        	Height="60" Margin="0,0,-1400,0" 
+        	Height="60" 
+            Margin="0,0,-1400,0" 
         	VerticalAlignment="Top" 
-        	Width="2000" 
+        	Width="{Binding ActualWidth, ElementName=TopBarDesign}" 
         	Background="{StaticResource AppPrimaryBackgroundColorDark}"/>
         <Image 
         	x:Name="TopBarDesign" 
@@ -49,7 +50,7 @@
             Margin="0,60,0,0" 
             VerticalAlignment="Top" 
             Background="{DynamicResource AppPrimaryBackgroundColorDark}" 
-            Width="3000">
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}">
 
             <Button 
                 x:Name="saveButton" 
@@ -71,8 +72,17 @@
             <Button 
                 x:Name="helpButton" 
                 Style="{StaticResource menuButtonStyle}"
-                Content="Help" Margin="258,0,0,0" Height="Auto" VerticalAlignment="Stretch" Click="HelpButton_Click"  />
-    
+                Content="Help" 
+                Margin="258,0,0,0" 
+                Height="Auto" 
+                VerticalAlignment="Stretch" 
+                Click="HelpButton_Click"  />
+
+            <Button 
+                x:Name="cancelButton" 
+                Style="{StaticResource menuButtonStyle}"
+                Content="Cancel" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
         </Grid>
 
         <ScrollBar 

@@ -24,7 +24,7 @@ namespace WheelsDataAssistant
         public HomePage()
         {
             InitializeComponent();
-            Questionaire newQuestionaire = new Questionaire("WCQ-C", 45);
+            Questionaire newQuestionaire = new Questionaire("WCQ-C", 45);          
 
         }
 
@@ -136,18 +136,12 @@ namespace WheelsDataAssistant
         private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
         {
             CloseButtoBackground.Background = (Brush)Application.Current.MainWindow.FindResource("AppPrimaryBackgroundColorDark");
-
+            
         }
 
         private void CloseButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             generateSummaryNotificationToast.Visibility = Visibility.Hidden;
-        }
-
-        private void NewQuestionaireButton_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            NewQuestionnairePage newQuestionnairePage = new NewQuestionnairePage();
-            this.NavigationService.Navigate(newQuestionnairePage);
         }
     }
 }
