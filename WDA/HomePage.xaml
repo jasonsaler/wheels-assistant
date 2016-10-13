@@ -110,44 +110,6 @@
         	VerticalAlignment="Top" 
         	RenderTransformOrigin="-5.174,0.576"/>
 
-        <Button 
-            x:Name="QuestionaireButton" 
-            Style="{StaticResource buttonStyle}" 
-            Margin="285,95,-35,0" Click="QuestionaireButton_Click"  
-            >
-            <Image x:Name="image" Height="176" Width="346" Source="ButtonDesign.png"/>
-        </Button>
-
-        <Button 
-        	x:Name="QuestionaireButton_Copy" 
-        	Style="{StaticResource ResourceKey=buttonStyle}" 
-            VerticalAlignment="Bottom"
-        	Margin="285,95,35,35" Click="QuestionaireButton_Click"  
-            >
-            <Image x:Name="image1" Height="176" Width="346" Source="ButtonDesign2.png"/>
-        </Button>
-
-        <Button 
-        	x:Name="QuestionaireButton_Copy1" 
-        	Style="{StaticResource ResourceKey=buttonStyle}" 
-        	Margin="285,95,35,35" 
-            Click="QuestionaireButton_Click" 
-            HorizontalAlignment="Right"
-            
-            >
-            <Image x:Name="image2" Height="176" Width="346" Source="ButtonDesign3.png"/>
-        </Button>
-
-        <Button 
-        	x:Name="QuestionaireButton_Copy2" 
-        	Style="{StaticResource ResourceKey=buttonStyle}" 
-        	VerticalAlignment="Bottom"
-            HorizontalAlignment="Right"
-        	Margin="285,0,35,35" Click="QuestionaireButton_Click"  
-            >
-            <Image x:Name="image3" Height="176" Width="346" Source="ButtonDesign4.png"/>
-        </Button>
-
         <Grid 
             x:Name="aboutPanel"
             HorizontalAlignment="Left" 
@@ -191,7 +153,7 @@
             <Label 
                 x:Name="toastLabel" 
                 Style="{StaticResource notificationToastLabelStyle}"
-                Content="Summary Sheet has generated successfully."/>
+                Content="Summary Sheet has generated successfully"/>
 
             <Grid
                 x:Name="CloseButtoBackground"
@@ -213,5 +175,12 @@
                     MouseUp="CloseButton_MouseUp"/>
             </Grid>
         </Grid>
+        <Grid 
+            x:Name="openSpaceGrid"
+            HorizontalAlignment="Left"  
+            Margin="0,90,0,0" 
+            VerticalAlignment="Top" 
+            Height="500"
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}"/>
     </Grid>
 </Page>

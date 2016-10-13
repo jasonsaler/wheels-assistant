@@ -38,36 +38,64 @@
             Width="{Binding ActualWidth, ElementName=TopBarDesign}">
 
             <Button 
-                x:Name="NewButton" 
+                x:Name="newButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="New" 
-                Width="60"/>
+                Width="60" Click="NewButton_MouseClick"/>
 
             <Button 
-                x:Name="SaveProgressButton" 
+                x:Name="saveProgressButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Save Progress" Margin="61,0,0,0" 
-                Width="100" />
+                Width="100" Click="SaveProgressButton_Click" />
 
             <Button 
-                x:Name="FinishButton" 
+                x:Name="finishButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Finish" 
                 Margin="162,0,0,0"
-                Width="68"/>
+                Width="68" Click="finishButton_Click"/>
 
             <Button 
                 x:Name="helpButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Help" 
                 Margin="233,0,0,0"
-                Width="66"/>
+                Width="66" Click="helpButton_Click"/>
 
             <Button 
                 x:Name="cancelButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Cancel" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0" Click="CancelButton_Click"/>
+
+            <Menu 
+                x:Name="newMenu" 
+                HorizontalAlignment="Left" 
+                Height="96" 
+                Margin="0,30,0,-100" 
+                VerticalAlignment="Top" 
+                Width="175"
+                Background="{DynamicResource AppPrimaryBackgroundColorDark}" 
+                Visibility="Hidden" MouseLeave="Menu_MouseLeave" >
+
+                <Label 
+                    x:Name="ratingQuestionButton" 
+                    Style="{StaticResource dropMenuButtonStyle}"
+                    Content="Rating Scale Question" 
+                    Width="165" />
+                <Label
+                    x:Name="multipleChoiceQuestionButton" 
+                    Style="{StaticResource dropMenuButtonStyle}"
+                    Content="Multiple Choice Question" 
+                    Width="165" />
+                <Label
+                    x:Name="yesNoQuestionButton" 
+                    Style="{StaticResource dropMenuButtonStyle}"
+                    Content="Yes/No Questionaire"
+                    Width="165"/>
+                <Grid Height="100" Width="100"/>
+            </Menu>
 
         </Grid>
 
@@ -96,5 +124,13 @@
         	Margin="70,5,0,0" 
         	VerticalAlignment="Top" 
         	RenderTransformOrigin="-5.174,0.576"/>
+        <Grid x:Name="openSpaceGrid" 
+            HorizontalAlignment="Left" 
+            Height="500" 
+            Margin="0,90,0,0" 
+            VerticalAlignment="Top" 
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}"/>
+
+
     </Grid>
 </Page>

@@ -18,6 +18,7 @@
         <Brush x:Key="TextLightColor">#FFFFFF</Brush>
         <Brush x:Key="TextDarkColor">#000000</Brush>
         <Brush x:Key="CloseButtonRed">#ED1B24</Brush>
+        <Brush x:Key="WarningYellow">#FFA500</Brush>
 
         <!-- Title text style -->
         <Style x:Key="titleTextStyle">
@@ -109,7 +110,7 @@
         <Style x:Key="notificationToastStyle" TargetType="{x:Type Grid}">
             <Setter Property="Width" Value="auto" />
             <Setter Property="Height" Value="30" />
-            <Setter Property="Margin" Value="0,110,0,0" />
+            <Setter Property="Margin" Value="0,0,0,0" />
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Background" Value="{StaticResource AppPrimaryBackgroundColorDark}" />
