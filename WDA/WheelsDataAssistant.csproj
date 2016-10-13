@@ -69,6 +69,10 @@
     <Compile Include="QuestionairePage.xaml.cs">
       <DependentUpon>QuestionairePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToastNotification.xaml.cs">
+      <DependentUpon>ToastNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisibilityAnimation.cs" />
     <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="QuestionairePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToastNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="CloseXTrans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseXTrans.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

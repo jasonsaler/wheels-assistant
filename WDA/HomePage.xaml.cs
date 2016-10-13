@@ -25,7 +25,6 @@ namespace WheelsDataAssistant
         {
             InitializeComponent();
             Questionaire newQuestionaire = new Questionaire("WCQ-C", 45);
-
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -119,8 +118,12 @@ namespace WheelsDataAssistant
 
         private void GenerateSummaryButton_Click(object sender, MouseButtonEventArgs e)
         {
+            ToastNotification generatedToast = new ToastNotification("Summary Report Generated Successfully", 7);
+            generatedToast.Visibility = Visibility.Visible;
+            openSpaceGrid.Children.Add(generatedToast);
+            
             GenerateSummaryReport();
-            generateSummaryNotificationToast.Visibility = Visibility.Visible;
+            //generateSummaryNotificationToast.Visibility = Visibility.Visible;
         }
 
         private void GenerateSummaryReport()

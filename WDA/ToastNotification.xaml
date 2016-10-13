@@ -1,0 +1,44 @@
+﻿<UserControl x:Name="toastBox" x:Class="WheelsDataAssistant.ToastNotification"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WheelsDataAssistant"
+             mc:Ignorable="d" 
+             Height="30" 
+             Width="auto" 
+             Margin="0,30,0,0" 
+             HorizontalAlignment="Center" 
+             VerticalAlignment="Top"
+             local:VisibilityAnimation.IsActive="True">
+
+        <Grid 
+            x:Name="NotificationToast"
+            Style="{StaticResource notificationToastStyle}">
+
+            <Label 
+                x:Name="toastLabel" 
+                Style="{StaticResource notificationToastLabelStyle}"
+                Content="HyeMi"/>
+
+            <Grid
+                x:Name="CloseButtoBackground"
+                Height="30" 
+                Width="30"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center"
+                Background="{StaticResource AppPrimaryBackgroundColorDark}">
+
+                <Image 
+                    x:Name="ToastCloseIcon" 
+                    Height="30" 
+                    Width="30"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center"
+                    Source="CloseXTrans.png" 
+                    MouseEnter="CloseButton_MouseEnter" 
+                    MouseLeave="CloseButton_MouseLeave" 
+                    MouseUp="CloseButton_MouseUp"/>
+            </Grid>
+        </Grid>
+</UserControl>
