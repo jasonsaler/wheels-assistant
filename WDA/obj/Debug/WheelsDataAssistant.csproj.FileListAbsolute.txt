@@ -77,3 +77,30 @@ C:\Users\jsaler\OneDrive\School Work\Software Engineering II\WheelsDataAssistant
 C:\Users\jsaler\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\WheelsDataAssistant.csproj.GenerateResource.Cache
 C:\Users\jsaler\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\WheelsDataAssistant.exe
 C:\Users\jsaler\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\WheelsDataAssistant.pdb
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\bin\Debug\WheelsDataAssistant.exe.config
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.exe
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.pdb
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\bin\Debug\WheelsDataAssistant.exe
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\bin\Debug\WheelsDataAssistant.pdb
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csprojResolveAssemblyReference.cache
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\HomePage.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\MainWindow.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\HelpPage.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\NewQuestionnairePage.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\QuestionairePage.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\ToastNotification.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\App.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant_MarkupCompile.cache
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant_MarkupCompile.lref
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\App.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\HomePage.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\MainWindow.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\HelpPage.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\NewQuestionnairePage.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\QuestionairePage.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\ToastNotification.baml
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.g.resources
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.Properties.Resources.resources
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csproj.GenerateResource.Cache
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csproj.ResolveComReference.cache

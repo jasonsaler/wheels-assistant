@@ -56,7 +56,7 @@
                 x:Name="saveButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Save Progress" 
-                Width="95"/>
+                Width="95" Click="saveButton_Click"/>
 
             <Button 
                 x:Name="saveNewButton" 
@@ -67,7 +67,7 @@
             <Button 
                 x:Name="FinishButton" 
                 Style="{StaticResource menuButtonStyle}"
-                Content="Finish" Margin="187,0,0,0"  />
+                Content="Finish" Margin="187,0,0,0" Click="FinishButton_Click"  />
 
             <Button 
                 x:Name="helpButton" 
@@ -82,7 +82,7 @@
                 x:Name="cancelButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Cancel" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0" Click="cancelButton_Click"/>
         </Grid>
 
         <ScrollBar 
@@ -100,67 +100,18 @@
             Margin="0,110,0,0"
             Background="{StaticResource TextLightColor}" >
 
-            <Label 
-        	    x:Name="PageTitleLabel" 
-        	    Style="{StaticResource titleTextStyle}"
-        	    Content="WCQ-C Questionaire" 
-        	    HorizontalAlignment="Center" 
-        	    Margin="0,20,0,0" 
-        	    VerticalAlignment="Top" 
-                Foreground="{StaticResource TextDarkColor}"
-        	    RenderTransformOrigin="-5.174,0.576"/>
-
-            <Label 
-                x:Name="PageSubTitle" 
-                Style="{StaticResource headerTextStyle}"
-                Content="Answer all teh questions as best as possible." 
-                HorizontalAlignment="Center" 
-                Margin="0,58,0,0" 
-                VerticalAlignment="Top"/>
-            <Label 
-            	x:Name="NameLabel" 
-            	Style="{StaticResource headerTextStyle}"
-            	Content="Name:" 
-            	HorizontalAlignment="Left" 
-            	Margin="40,105,319,0" 
-            	VerticalAlignment="Top"/>
-
+           
             <TextBox 
-                x:Name="NameInput" 
-                Style="{StaticResource headerTextStyle}"
-                HorizontalAlignment="Left" 
-                Height="23" 
-                Margin="105,110,0,0" 
-                TextWrapping="Wrap" 
-                Text=" " 
-                VerticalAlignment="Top" 
-                Width="250"/>
-            <Label 
-            	x:Name="DOBLabel" 
-            	Style="{StaticResource headerTextStyle}"
-            	Content="Date of Birth:" 
-            	HorizontalAlignment="Left" 
-            	Margin="390,105,0,0" 
-            	VerticalAlignment="Top"/>
-            <TextBox 
-            	x:Name="DOBInput" 
+            	x:Name="txtEditor" 
             	Style="{StaticResource ResourceKey=headerTextStyle}"
             	HorizontalAlignment="Left" 
-            	Height="23" 
-            	Margin="500,110,0,0" 
+            	Height="192" 
+            	Margin="119,10,0,0" 
             	TextWrapping="Wrap" 
             	Text=" " 
             	VerticalAlignment="Top" 
-            	Width="250"/>
-            <Image 
-                x:Name="ExampleQuestion" 
-                HorizontalAlignment="Center" 
-                Height="165" 
-                Margin="100,150,100,0" 
-                VerticalAlignment="Top" 
-                Width="600" 
-                Source="Example question.PNG" 
-                Stretch="UniformToFill"/>
+            	Width="562"/>
+          
             
             <Slider 
                 x:Name="slider" 
