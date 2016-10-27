@@ -13,6 +13,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//using System.Windows.Forms;
+using System.IO;
 
 namespace WheelsDataAssistant
 {
@@ -118,6 +120,21 @@ namespace WheelsDataAssistant
 
         private void GenerateSummaryButton_Click(object sender, MouseButtonEventArgs e)
         {
+
+            System.Windows.Forms.FolderBrowserDialog selectFolder = new System.Windows.Forms.FolderBrowserDialog();
+
+            System.Windows.Forms.DialogResult result = selectFolder.ShowDialog();
+
+
+            //show a message 
+            /*    if (!string.IsNullOrWhiteSpace(selectFolder.SelectedPath))
+                {
+                    string[] files = Directory.GetFiles(selectFolder.SelectedPath);
+                    ToastNotification generatedToast0 = new ToastNotification("Files found: " + files.Length.ToString());
+                    generatedToast0.Visibility = Visibility.Visible;
+                    openSpaceGrid.Children.Add(generatedToast0);
+              } */
+
             ToastNotification generatedToast = new ToastNotification("Summary Report Generated Successfully", 7);
             generatedToast.Visibility = Visibility.Visible;
             openSpaceGrid.Children.Add(generatedToast);

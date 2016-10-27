@@ -103,3 +103,4 @@ C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.g.re
 C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.Properties.Resources.resources
 C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csproj.GenerateResource.Cache
 C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csproj.ResolveComReference.cache
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csprojResolveAssemblyReference.cache

@@ -45,7 +45,7 @@
             <Button 
                 x:Name="fileButton" 
                 Style="{StaticResource menuButtonStyle}"
-                Content="File" Click="FileButton_Click" />
+                Content="File" Click="FileButton_Click" Height="Auto" Margin="0" VerticalAlignment="Stretch" />
 
             <Button 
                 x:Name="aboutButton" 
