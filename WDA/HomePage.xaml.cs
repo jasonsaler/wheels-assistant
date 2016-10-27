@@ -152,5 +152,11 @@ namespace WheelsDataAssistant
             NewQuestionnairePage newQuestionnairePage = new NewQuestionnairePage();
             this.NavigationService.Navigate(newQuestionnairePage);
         }
+
+      /*  private void button_Click(object sender, RoutedEventArgs e)
+        {
+            QuestionairePage WcqcQuestionaire = new QuestionairePage();
+            this.NavigationService.Navigate(WcqcQuestionaire);
+        }*/
     }
 }

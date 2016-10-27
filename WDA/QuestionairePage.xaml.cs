@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 
@@ -24,6 +23,7 @@ namespace WheelsDataAssistant
     /// </summary>
     public partial class QuestionairePage : System.Windows.Controls.Page
     {
+        string s;
         static int ClicksCount = 0;
         static int count = 2;
         string f = "records.xls";
@@ -68,7 +68,6 @@ namespace WheelsDataAssistant
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             string t = txtEditor.Text;
             saveFileDialog.FileName = "records.xls";
-            string s = saveFileDialog.SafeFileName;
             ClicksCount++;
             if (ClicksCount == 1)
             {
@@ -79,27 +78,32 @@ namespace WheelsDataAssistant
                 if (saveFileDialog.ShowDialog() == true)
                 {
                     File.WriteAllText(saveFileDialog.FileName, txtEditor.Text);
+                    s = saveFileDialog.FileName;
+
                 }
             }
             else
             {
-                try
-                {
-                    File.SetAttributes(s, FileAttributes.Normal);
-                    saveFileDialog.Filter = "Execl files (*.xls)|*.xls";
-                    var excelApp = new Excel.Application();
-                    excelApp.Workbooks.Open(f, 3, false, 5, Type.Missing, Type.Missing, true);
-                    Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
-                    workSheet.Cells[count, "A"] = t;
-                    count++;
-                    File.WriteAllText(saveFileDialog.FileName, txtEditor.Text);
-                    excelApp.DisplayAlerts = false;
-                    workSheet.SaveAs(f, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, true, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
-                    excelApp.Workbooks.Close();
-                    excelApp.Quit();
-                    MessageBox.Show("Saved");
-                }
-                catch (FileNotFoundException) { }
+                Environment.CurrentDirectory = Path.GetDirectoryName(s);
+                File.SetAttributes(s, FileAttributes.Normal);
+                saveFileDialog.Filter = "Execl files (*.xls)|*.xls";
+                var excelApp = new Excel.Application();
+                File.WriteAllText(s, txtEditor.Text);
+                excelApp.Workbooks.Open(s, 3, false, 5, Type.Missing, Type.Missing, true);
+                Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
+                workSheet.Cells[count, "A"] = t;
+                count++;
+                excelApp.DisplayAlerts = false;
+                workSheet.SaveAs(f, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, true, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                excelApp.Workbooks.Close();
+                excelApp.Quit();
+                ToastNotification tNotification = new ToastNotification("Saved");
+                tNotification.Visibility = Visibility.Visible;
+                openSpaceGrid.Children.Add(tNotification);
+
+
+
+
             }
         }
     }

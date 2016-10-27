@@ -93,6 +93,7 @@
             Width="17"/>
 
         <Grid 
+             x:Name="openSpaceGrid"
             HorizontalAlignment="Center" 
             Height="1100"
             Width="800"
@@ -113,12 +114,7 @@
             	Width="562"/>
           
             
-            <Slider 
-                x:Name="slider" 
-                HorizontalAlignment="Center" 
-                Margin="0,335,0,0" 
-                VerticalAlignment="Top"
-                Width="600"/>
+           
 
         </Grid>
 
