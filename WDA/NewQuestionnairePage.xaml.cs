@@ -53,7 +53,12 @@ namespace WheelsDataAssistant
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to close this form? Changes will not be saved?", "Cancel", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                HomePage homePage = new HomePage();
+                this.NavigationService.Navigate(homePage);
+            }
         }
 
         private void helpButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +69,8 @@ namespace WheelsDataAssistant
 
         private void finishButton_Click(object sender, RoutedEventArgs e)
         {
-
+            HomePage homePage = new HomePage();
+            this.NavigationService.Navigate(homePage);
         }
 
         private void SaveProgressButton_Click(object sender, RoutedEventArgs e)

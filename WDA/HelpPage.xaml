@@ -9,7 +9,7 @@
       Background="{StaticResource AppPrimaryBackgroundColorLight}"
       Title="HelpPage">
 
-    <Grid Margin="0,0,-333,-160">
+    <Grid Margin="0,0,-333,-426">
         <Grid 
             HorizontalAlignment="Left" 
             Height="60" 
@@ -67,5 +67,10 @@
         	Margin="70,5,0,0" 
         	VerticalAlignment="Top" 
         	RenderTransformOrigin="-5.174,0.576"/>
+        <Label x:Name="label" Content="How to generate a new questionnaire?" FontSize="15" HorizontalAlignment="Left" Height="93" Margin="15,95,0,0" VerticalAlignment="Top" Width="484"/>
+        <Label x:Name="label0" Content="1- In the Home page, select File -> New Questionnaire. &#10;2- Select New " FontSize="12" HorizontalAlignment="Left" Height="93" Margin="38,125,0,0" VerticalAlignment="Top" Width="484"/>
+        <Label x:Name="label1" Content="How to generate a summary sheet?" FontSize="15" HorizontalAlignment="Left" Height="79" Margin="15,322,0,0" VerticalAlignment="Top" Width="269"/>
+        <Label x:Name="label11" Content="1- In the Home page, select File -> Generate Summary Sheet. &#10;2- Select the folder that contains the individual reports." FontSize="12" HorizontalAlignment="Left" Height="79" Margin="25,346,0,0" VerticalAlignment="Top" Width="532"/>
+        <Label x:Name="label2" Content="How to fill out a questionnaire?" FontSize="15" HorizontalAlignment="Left" Height="79" Margin="15,444,0,0" VerticalAlignment="Top" Width="269"/>
     </Grid>
 </Page>

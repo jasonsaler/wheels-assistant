@@ -104,3 +104,5 @@ C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.Prop
 C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csproj.GenerateResource.Cache
 C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csproj.ResolveComReference.cache
 C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\WheelsDataAssistant.csprojResolveAssemblyReference.cache
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\HomePageButton.g.cs
+C:\Users\LA\Source\Repos\wheels-assistant\WDA\obj\Debug\HomePageButton.baml

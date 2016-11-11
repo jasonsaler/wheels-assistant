@@ -41,7 +41,7 @@
                 x:Name="newButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="New" 
-                Width="60" Click="NewButton_MouseClick"/>
+                Width="60" Click="NewButton_MouseClick" Margin="0" VerticalAlignment="Bottom"/>
 
             <Button 
                 x:Name="saveProgressButton" 

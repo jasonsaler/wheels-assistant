@@ -23,11 +23,29 @@ namespace WheelsDataAssistant
     /// </summary>
     public partial class HomePage : Page
     {
+        
+      
+
         public HomePage()
         {
             InitializeComponent();
             Questionaire newQuestionaire = new Questionaire("WCQ-C", 45);
+
+            //creating a questionair button example
+           /* HomePageButton firstButton = new HomePageButton("title", "desc");
+            firstButton.Visibility = Visibility.Visible;
+            openSpaceGrid.Children.Add(firstButton);
+            firstButton.ButtonClick += new EventHandler(firstButton_buttonClick); */
+    
         }
+
+        // handle the button click example
+        /*   protected void firstButton_buttonClick(object sender, EventArgs e)
+           {
+              //handle the event here 
+           } */
+
+
 
         private void button1_Click(object sender, RoutedEventArgs e)
 
@@ -126,7 +144,7 @@ namespace WheelsDataAssistant
             System.Windows.Forms.DialogResult result = selectFolder.ShowDialog();
 
 
-            //show a message 
+            //show a message of how many files in the selected folder 
             /*    if (!string.IsNullOrWhiteSpace(selectFolder.SelectedPath))
                 {
                     string[] files = Directory.GetFiles(selectFolder.SelectedPath);
@@ -170,10 +188,6 @@ namespace WheelsDataAssistant
             this.NavigationService.Navigate(newQuestionnairePage);
         }
 
-      /*  private void button_Click(object sender, RoutedEventArgs e)
-        {
-            QuestionairePage WcqcQuestionaire = new QuestionairePage();
-            this.NavigationService.Navigate(WcqcQuestionaire);
-        }*/
+     
     }
 }
