@@ -26,7 +26,7 @@
             Height="60" 
             VerticalAlignment="Top" 
             Width="auto" 
-            Source="WaveBackgroundBlue2.png" 
+            Source="Resources/WaveBackgroundBlue2.png" 
             Stretch="Fill"/>
 
         <Grid 
@@ -99,7 +99,7 @@
             Margin="15,5,0,0" 
             VerticalAlignment="Top" 
             Width="50" 
-            Source="LetuShieldSmall.png"/>
+            Source="Resources/LetuShieldSmall.png"/>
 
         <Label 
         	x:Name="TitleLabel" 
@@ -113,9 +113,9 @@
         <Grid 
             x:Name="aboutPanel"
             HorizontalAlignment="Left" 
-            Height="500" 
+            Height="auto" 
             Margin="0,90,0,0" 
-            VerticalAlignment="Top" 
+            VerticalAlignment="Stretch" 
             Width="210" 
             Background="{StaticResource AppPrimaryBackgroundColorDark}" Visibility="Hidden" MouseLeave="AboutPanel_MouseLeave">
 
@@ -169,7 +169,7 @@
                     Width="30"
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center"
-                    Source="CloseXTrans.png" 
+                    Source="pack://siteoforigin:,,,/Resources/CloseXTrans.png" 
                     MouseEnter="CloseButton_MouseEnter" 
                     MouseLeave="CloseButton_MouseLeave" 
                     MouseUp="CloseButton_MouseUp"/>

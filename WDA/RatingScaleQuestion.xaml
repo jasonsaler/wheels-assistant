@@ -1,0 +1,271 @@
+﻿<UserControl x:Name="RatingScaleQuestionBox"
+             x:Class="WheelsDataAssistant.RatingScaleQuestion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WheelsDataAssistant"
+             mc:Ignorable="d" 
+             Height="auto"
+             Margin="50,10,50,10"
+             Width="auto"
+             HorizontalAlignment="Stretch">
+
+    <Grid 
+        Height="auto" 
+        VerticalAlignment="Top" 
+        Width="auto"
+        HorizontalAlignment="Stretch">
+
+        <Grid 
+            Height="auto" 
+            VerticalAlignment="Stretch" 
+            Width="auto"
+            HorizontalAlignment="Left">
+
+            <TextBox
+                x:Name="questionNumber" 
+                HorizontalAlignment="Stretch" 
+                Margin="0,0,0,0"  
+                Text="1" 
+                VerticalAlignment="Top"
+                FontFamily="Calibri"
+                FontSize="16"
+                Foreground="Black"
+                Width="auto" 
+                ToolTip="Change the number to change order" 
+                MaxLines="1" 
+                MaxLength="4" 
+                IsUndoEnabled="False" AutomationProperties.HelpText="Change the question number to change order" />
+
+            <Grid 
+                x:Name="deletIconBackground"
+                Height="25" 
+                VerticalAlignment="Top" 
+                Margin="0,70,0,0"
+                Width="25"
+                HorizontalAlignment="Left">
+
+                <Image 
+                    x:Name="deletIcon" 
+                    HorizontalAlignment="Left" 
+                    Height="25" 
+                    Width="25"
+                    VerticalAlignment="Top" 
+                    Source="Resources/CloseXBlack.png" 
+                    MouseEnter="CloseButton_MouseOver" 
+                    MouseLeave="CloseButton_MouseLeave" 
+                    MouseUp="CloseButton_MouseUP" AutomationProperties.HelpText="Delete this question"/>
+            </Grid>
+            
+            <CheckBox 
+                x:Name="naCheckbox" 
+                Content="N/A" 
+                HorizontalAlignment="Left" 
+                Margin="0,37,0,0" 
+                VerticalAlignment="Top" AutomationProperties.HelpText="Select to allow a N/A option on this question"/>
+        </Grid>
+
+        <Grid 
+            Height="auto" 
+            VerticalAlignment="Stretch" 
+            Width="auto"
+            HorizontalAlignment="Left"
+            Margin="50,0,0,0">
+
+            <Grid 
+                Height="auto" 
+                VerticalAlignment="Stretch" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="0,0,0,110">
+
+                <TextBlock 
+                    x:Name="Question" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="This is the Question?" 
+                    VerticalAlignment="Top"
+                    FontFamily="Calibri"
+                    Width="auto"
+                    FontSize="16"
+                    Foreground="Black"
+                    Visibility="Hidden" 
+                    FontWeight="Bold"/>
+
+                <TextBox
+                    x:Name="newQuestion" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    VerticalAlignment="Top"
+                    FontFamily="Calibri"
+                    FontSize="16"
+                    Width="auto" 
+                    AcceptsTab="True" 
+                    AcceptsReturn="True" 
+                    SpellCheck.IsEnabled="True" 
+                    AutomationProperties.HelpText="Enter the question" 
+                    Foreground="{StaticResource AppPrimaryBackgroundColorLight}"
+                    Text="Enter the question here..."
+                    GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                    LostKeyboardFocus="newQuestionBox_LostKeyboardFocus" />
+            </Grid>
+
+            <Grid
+                Height="auto" 
+                VerticalAlignment="Bottom" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="30,0,30,60">
+
+                <Grid
+                    x:Name="bBox"
+                    Height="auto" 
+                    VerticalAlignment="Bottom" 
+                    Width="100"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,5">
+
+                    <TextBlock
+                        Text="B"
+                        Width="auto"
+                        Height="auto"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center" 
+                        FontFamily="Calibri" 
+                        FontSize="14"/>
+
+                    <TextBlock
+                        Text="A"
+                        Width="auto"
+                        Height="auto"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" 
+                        FontFamily="Calibri" 
+                        FontSize="14"/>
+
+                </Grid>
+
+                <Grid
+                    Height="auto" 
+                    VerticalAlignment="Bottom" 
+                    Width="auto"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,5">
+
+                    <TextBlock
+                        Text="C"
+                        Width="auto"
+                        Height="auto"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" 
+                        FontFamily="Calibri" 
+                        FontSize="14"/>
+                </Grid>
+
+                <Grid
+                    x:Name="dBox"
+                    Height="auto" 
+                    VerticalAlignment="Bottom" 
+                    Width="100"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,0,5">
+
+                    <TextBlock
+                        Text="D"
+                        Width="auto"
+                        Height="auto"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" 
+                        FontFamily="Calibri" 
+                        FontSize="14"/>
+
+                    <TextBlock
+                        Text="E/F"
+                        Width="auto"
+                        Height="auto"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center" 
+                        FontFamily="Calibri" 
+                        FontSize="14"/>
+                </Grid>
+            </Grid>
+
+            <Grid 
+                Height="auto" 
+                VerticalAlignment="Bottom" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="0,10,0,80">
+
+                <Slider 
+                    x:Name="RatingSlider" 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Top"
+                    MinWidth="200"
+                    Width="auto" 
+                    Margin="30,25,30,0"
+                    Foreground="{StaticResource AppSecondaryBackgroundColorDark}" AutomationProperties.HelpText="Slide to give a rating from A(Excellent) to E/F(very poor)"/>
+
+                <Image 
+                    x:Name="sadImage" 
+                    HorizontalAlignment="Left" 
+                    Height="20" 
+                    Width="20"
+                    Margin="0,25,0,0" 
+                    VerticalAlignment="Top" 
+                    Source="Resources/sadFaceSmall.png"/>
+
+                <Image x:Name="happyImage" 
+                    HorizontalAlignment="Right" 
+                    Height="20" 
+                    Width="20"
+                    Margin="0,25,0,0" 
+                    VerticalAlignment="Top" 
+                    Source="Resources/happyFaceSmall.png"/>
+            </Grid>
+
+            <Grid 
+                x:Name="commentGrid"
+                Height="auto" 
+                VerticalAlignment="Bottom" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="0,0,0,0">
+
+                <TextBlock 
+                    x:Name="commentTitle" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="Comments: " 
+                    VerticalAlignment="Top"
+                    FontFamily="Calibri"
+                    Width="auto"
+                    FontSize="16"
+                    Foreground="Black"/>
+
+                <TextBox
+                    x:Name="userCommentBox" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,20,0,0" 
+                    Text="Comments go here..." 
+                    IsReadOnly="True"
+                    Background="LightGray"
+                    VerticalAlignment="Bottom"
+                    FontFamily="Calibri"
+                    FontSize="16"
+                    Foreground="Black"
+                    Width="auto" 
+                    AcceptsTab="True" 
+                    AcceptsReturn="True" 
+                    SpellCheck.IsEnabled="True" 
+                    MaxLines="2" 
+                    TextWrapping="WrapWithOverflow" 
+                    MinLines="2" AutomationProperties.HelpText="Enter any additional comments as necessary"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

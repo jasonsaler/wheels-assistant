@@ -59,20 +59,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BlankResponseQuestion.xaml.cs">
+      <DependentUpon>BlankResponseQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewQuestionnairePage.xaml.cs">
       <DependentUpon>NewQuestionnairePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Question.cs" />
     <Compile Include="Questionaire.cs" />
     <Compile Include="QuestionairePage.xaml.cs">
       <DependentUpon>QuestionairePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionControls\MultipleChoiceQuestion.xaml.cs">
+      <DependentUpon>MultipleChoiceQuestion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionStencil.cs" />
+    <Compile Include="RatingScaleQuestion.xaml.cs">
+      <DependentUpon>RatingScaleQuestion.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToastNotification.xaml.cs">
       <DependentUpon>ToastNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisibilityAnimation.cs" />
+    <Page Include="BlankResponseQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +116,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="QuestionairePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuestionControls\MultipleChoiceQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RatingScaleQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,58 +160,64 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="SplashScreen1.png" />
+    <SplashScreen Include="Resources\SplashScreen1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WaveBackgroundBlue2.png" />
+    <Resource Include="Resources\WaveBackgroundBlue2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="QuestionaireButtonTemplate.xml" />
+    <Resource Include="Resources\FavoritesIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="FavoritesIcon.png" />
+    <Resource Include="Resources\LetuShield.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="LetuShield.png" />
+    <Resource Include="Resources\LetuShieldSmall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="LetuShieldSmall.png" />
+    <Resource Include="Resources\FavoritesIconSmall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="FavoritesIconSmall.png" />
+    <Resource Include="Resources\RecentIconWideSmall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="RecentIconWideSmall.png" />
+    <Resource Include="Resources\WheelsIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WheelsIcon.ico" />
+    <Resource Include="Resources\W Icon Trans.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="W Icon Trans.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Example question.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ButtonDesign.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ButtonDesign2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ButtonDesign4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ButtonDesign3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="CloseX.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="CloseXTrans.png" />
+    <Resource Include="Resources\CloseX.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CloseXTrans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sadFace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\happyFace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sadFaceSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\happyFaceSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SliderAlfaScale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CloseXBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PlusTrans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MinusTrans.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,6 +12,9 @@
             Background="{StaticResource AppPrimaryBackgroundColorDark}" 
             WindowStartupLocation="CenterScreen" 
             WindowState="Maximized"
-            Source="HomePage.xaml" Icon="W Icon Trans.png">
+            Source="HomePage.xaml" 
+            Icon="Resources/W Icon Trans.png" 
+            MinHeight="300" 
+            MinWidth="500"> 
 
 </NavigationWindow>

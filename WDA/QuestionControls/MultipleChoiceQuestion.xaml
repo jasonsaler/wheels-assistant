@@ -1,0 +1,309 @@
+﻿<UserControl x:Class="WheelsDataAssistant.QuestionControls.MultipleChoiceQuestion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WheelsDataAssistant.QuestionControls"
+             mc:Ignorable="d" 
+             Height="auto"
+             Margin="50,10,50,10"
+             Width="auto"
+             HorizontalAlignment="Stretch">
+    <Grid 
+        Height="auto" 
+        VerticalAlignment="Top" 
+        Width="auto"
+        HorizontalAlignment="Stretch">
+
+        <Grid 
+            Height="auto" 
+            VerticalAlignment="Stretch" 
+            Width="auto"
+            HorizontalAlignment="Left">
+
+            <TextBox
+                x:Name="questionNumber" 
+                HorizontalAlignment="Stretch" 
+                Margin="0,0,0,0"  
+                Text="1" 
+                VerticalAlignment="Top"
+                FontFamily="Calibri"
+                FontSize="16"
+                Foreground="Black"
+                Width="auto" 
+                ToolTip="Change the number to change order" 
+                MaxLines="1" 
+                MaxLength="4" 
+                IsUndoEnabled="False" />
+
+            <Grid 
+                x:Name="deletIconBackground"
+                Height="25" 
+                VerticalAlignment="Top" 
+                Margin="0,70,0,0"
+                Width="25"
+                HorizontalAlignment="Left">
+
+                <Image 
+                    x:Name="deletIcon" 
+                    HorizontalAlignment="Left" 
+                    Height="25" 
+                    Width="25"
+                    VerticalAlignment="Top" 
+                    Source="/WheelsDataAssistant;component/Resources/CloseXBlack.png" 
+                    MouseEnter="CloseButton_MouseOver" 
+                    MouseLeave="CloseButton_MouseLeave" 
+                    MouseUp="CloseButton_MouseUP" AutomationProperties.HelpText="Delete this question"/>
+            </Grid>
+
+            <Grid 
+                x:Name="plusIconBackground"
+                Height="25" 
+                VerticalAlignment="Top" 
+                Margin="0,100,0,0"
+                Width="25"
+                HorizontalAlignment="Left">
+
+                <Image 
+                    x:Name="plusIcon" 
+                    HorizontalAlignment="Left" 
+                    Height="25" 
+                    Width="25"
+                    VerticalAlignment="Top" 
+                    Source="/WheelsDataAssistant;component/PlusTrans.png" 
+                    MouseEnter="PlusButton_MouseOver" 
+                    MouseLeave="PlusButton_MouseLeave" 
+                    MouseUp="PlusButton_MouseUP" AutomationProperties.HelpText="Add another choice; up to 6"/>
+            </Grid>
+
+            <Grid 
+                x:Name="minusIconBackground"
+                Height="25" 
+                VerticalAlignment="Top" 
+                Margin="0,130,0,0"
+                Width="25"
+                HorizontalAlignment="Left">
+
+                <Image 
+                    x:Name="minusIcon" 
+                    HorizontalAlignment="Left" 
+                    Height="25" 
+                    Width="25"
+                    VerticalAlignment="Top" 
+                    Source="/WheelsDataAssistant;component/MinusTrans.png" 
+                    MouseEnter="MinusButton_MouseOver" 
+                    MouseLeave="MinusButton_MouseLeave" 
+                    MouseUp="MinusButton_MouseUP" AutomationProperties.HelpText="Remove a choice; must have at least 2"/>
+            </Grid>
+
+            <CheckBox 
+                x:Name="naCheckbox" 
+                Content="N/A" 
+                HorizontalAlignment="Left" 
+                Margin="0,37,0,0" 
+                VerticalAlignment="Top" AutomationProperties.HelpText="Select to give the question an N/A option"/>
+        </Grid>
+
+        <Grid 
+            Height="auto" 
+            VerticalAlignment="Stretch" 
+            Width="auto"
+            HorizontalAlignment="Left"
+            Margin="50,0,0,0">
+
+            <Grid 
+                Height="auto" 
+                VerticalAlignment="Stretch" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="0,0,0,110">
+
+                <TextBlock 
+                    x:Name="Question" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="This is the Question?" 
+                    VerticalAlignment="Top"
+                    FontFamily="Calibri"
+                    Width="auto"
+                    FontSize="16"
+                    Foreground="Black"
+                    Visibility="Hidden" 
+                    FontWeight="Bold"/>
+
+                <TextBox
+                    x:Name="newQuestion" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    VerticalAlignment="Top"
+                    FontFamily="Calibri"
+                    FontSize="16"
+                    Width="auto" 
+                    AcceptsTab="True" 
+                    AcceptsReturn="True" 
+                    SpellCheck.IsEnabled="True" 
+                    MaxLines="2" 
+                    AutomationProperties.HelpText="Enter the question"
+                    Foreground="{StaticResource AppPrimaryBackgroundColorLight}"
+                    Text="Enter the question here..."
+                    GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                    LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+            </Grid>
+
+            <Grid 
+                x:Name="buttonsGrid"
+                Height="auto" 
+                VerticalAlignment="Bottom" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="0,50,0,80">
+
+                <Grid 
+                    x:Name="firstButton"
+                    Style="{StaticResource multiChoiceStyle}">
+
+                    <RadioButton 
+                        x:Name="firstChoice" 
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+
+                    <TextBox
+                        x:Name="firstChoiceInput" 
+                        Style="{StaticResource multiChoiceTextBoxStyle}" 
+                        AutomationProperties.HelpText="Input the choice option"
+                        GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                        LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+                </Grid>
+
+                <Grid 
+                    x:Name="secondButton"
+                    Style="{StaticResource multiChoiceStyle}"
+                    Margin="0,25,0,0">
+
+                    <RadioButton 
+                        x:Name="secondChoice" 
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+
+                    <TextBox
+                        x:Name="secondChoiceInput" 
+                        Style="{StaticResource multiChoiceTextBoxStyle}" 
+                        AutomationProperties.HelpText="Input the choice option" 
+                        GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                        LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+                </Grid>
+
+                <Grid 
+                    x:Name="thirdButton"
+                    Style="{StaticResource multiChoiceStyle}"
+                    Margin="0,50,0,0">
+
+                    <RadioButton 
+                        x:Name="thirdChoice" 
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+
+                    <TextBox
+                        x:Name="thirdChoiceInput" 
+                        Style="{StaticResource multiChoiceTextBoxStyle}" 
+                        AutomationProperties.HelpText="Input the choice option" 
+                        GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                        LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+                </Grid>
+
+                <Grid 
+                    x:Name="fourthButton"
+                    Style="{StaticResource multiChoiceStyle}"
+                    Margin="0,75,0,0">
+
+                    <RadioButton 
+                        x:Name="fourthChoice" 
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+
+                    <TextBox
+                        x:Name="fourthChoiceInput" 
+                        Style="{StaticResource multiChoiceTextBoxStyle}" 
+                        AutomationProperties.HelpText="Input the choice option" 
+                        GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                        LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+                </Grid>
+
+                <Grid 
+                    x:Name="fifthButton"
+                    Style="{StaticResource multiChoiceStyle}"
+                    Margin="0,100,0,0"
+                    Visibility="Collapsed">
+
+                    <RadioButton 
+                        x:Name="fifthdChoice" 
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+
+                    <TextBox
+                        x:Name="fifthChoiceInput" 
+                        Style="{StaticResource multiChoiceTextBoxStyle}" 
+                        AutomationProperties.HelpText="Input the choice option" 
+                        GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                        LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+                </Grid>
+
+                <Grid 
+                    x:Name="sixthButton"
+                    Style="{StaticResource multiChoiceStyle}"
+                    Margin="0,125,0,0"
+                    Visibility="Collapsed">
+
+                    <RadioButton 
+                        x:Name="sixthChoice" 
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+
+                    <TextBox
+                        x:Name="sixthChoiceInput" 
+                        Style="{StaticResource multiChoiceTextBoxStyle}" 
+                        AutomationProperties.HelpText="Input the choice option" 
+                        GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
+                        LostKeyboardFocus="newQuestionBox_LostKeyboardFocus"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid 
+                x:Name="commentGrid"
+                Height="auto" 
+                VerticalAlignment="Bottom" 
+                Width="auto"
+                HorizontalAlignment="Stretch"
+                Margin="0,0,0,0">
+
+                <TextBlock 
+                    x:Name="commentTitle" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="Comments: " 
+                    VerticalAlignment="Top"
+                    FontFamily="Calibri"
+                    Width="auto"
+                    FontSize="16"
+                    Foreground="Black"/>
+
+                <TextBox
+                    x:Name="userCommentBox" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,20,0,0" 
+                    Text="Comments go here..." 
+                    IsReadOnly="True"
+                    Background="LightGray"
+                    VerticalAlignment="Bottom"
+                    FontFamily="Calibri"
+                    FontSize="16"
+                    Foreground="Black"
+                    Width="auto" 
+                    AcceptsTab="True" 
+                    AcceptsReturn="True" 
+                    SpellCheck.IsEnabled="True" 
+                    MaxLines="2" 
+                    TextWrapping="WrapWithOverflow" 
+                    MinLines="2" AutomationProperties.HelpText="Enter any comments if necessary"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

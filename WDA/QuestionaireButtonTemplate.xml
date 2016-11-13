@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Button HorizontalAlignment="Left" Margin="390,125,0,0" VerticalAlignment="Top" Width="160" Height="135" RenderTransformOrigin="0.343,0.371">
-  <Grid Height="110" Width="130">
-    <Label Content="Label" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Foreground="{StaticResource TextLightColor}"/>
-    <Image HorizontalAlignment="Left" Height="40" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920" Source="WaveBackgroundBlue2.png" Stretch="Fill"/>
-    <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom"/>
-  </Grid>
-</Button>

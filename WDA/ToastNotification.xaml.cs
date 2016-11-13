@@ -77,6 +77,7 @@ namespace WheelsDataAssistant
         private void CloseButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             toastBox.Visibility = Visibility.Hidden;
+            dispatcherTimer.Stop();
         }
 
         private void activateToast()

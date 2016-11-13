@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/closextrans.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("minustrans.png")]
 
 

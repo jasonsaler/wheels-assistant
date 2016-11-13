@@ -131,6 +131,42 @@
             <Setter Property="Background" Value="{StaticResource AppPrimaryBackgroundColorDark}" />
         </Style>
 
+        <!-- Multiple Choice Text box style -->
+        <Style x:Key="multiChoiceTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Margin" Value="20,0,0,0"  />
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="Foreground" Value="{StaticResource AppPrimaryBackgroundColorLight}"/>
+            <Setter Property="AcceptsTab" Value="True" />
+            <Setter Property="AcceptsReturn" Value="True" />
+            <Setter Property="SpellCheck.IsEnabled" Value="True" />
+            <Setter Property="Text" Value="Enter the choice here..." />
+        </Style>
+
+        <!-- Multiple Choice Box style -->
+        <Style x:Key="multiChoiceStyle" TargetType="{x:Type Grid}">
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+
+        <!-- Multiple Choice Button style -->
+        <Style x:Key="multiChoiceButtonStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+        </Style>
+
 
 
 

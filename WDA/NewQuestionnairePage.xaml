@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WheelsDataAssistant"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="300" 
+      d:DesignWidth="300"
       Background="{StaticResource AppPrimaryBackgroundColorLight}"
       Title="NewQuestionnairePage">
 
@@ -25,7 +26,7 @@
             Height="60" 
             VerticalAlignment="Top" 
             Width="auto" 
-            Source="WaveBackgroundBlue2.png" 
+            Source="Resources/WaveBackgroundBlue2.png" 
             Stretch="Fill"/>
 
         <Grid 
@@ -47,56 +48,33 @@
                 x:Name="saveProgressButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Save Progress" Margin="61,0,0,0" 
-                Width="100" Click="SaveProgressButton_Click" />
+                Width="100" 
+                Click="SaveProgressButton_Click" />
 
             <Button 
                 x:Name="finishButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Finish" 
                 Margin="162,0,0,0"
-                Width="68" Click="finishButton_Click"/>
+                Width="68" 
+                Click="finishButton_Click"/>
 
             <Button 
                 x:Name="helpButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Help" 
                 Margin="233,0,0,0"
-                Width="66" Click="helpButton_Click"/>
+                Width="66" 
+                Click="helpButton_Click"/>
 
             <Button 
                 x:Name="cancelButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Cancel" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0" Click="CancelButton_Click"/>
-
-            <Menu 
-                x:Name="newMenu" 
-                HorizontalAlignment="Left" 
-                Height="96" 
-                Margin="0,30,0,-100" 
-                VerticalAlignment="Top" 
-                Width="175"
-                Background="{DynamicResource AppPrimaryBackgroundColorDark}" 
-                Visibility="Hidden" MouseLeave="Menu_MouseLeave" >
-
-                <Label 
-                    x:Name="ratingQuestionButton" 
-                    Style="{StaticResource dropMenuButtonStyle}"
-                    Content="Rating Scale Question" 
-                    Width="165" />
-                <Label
-                    x:Name="multipleChoiceQuestionButton" 
-                    Style="{StaticResource dropMenuButtonStyle}"
-                    Content="Multiple Choice Question" 
-                    Width="165" />
-                <Label
-                    x:Name="yesNoQuestionButton" 
-                    Style="{StaticResource dropMenuButtonStyle}"
-                    Content="Yes/No Questionaire"
-                    Width="165"/>
-                <Grid Height="100" Width="100"/>
-            </Menu>
-
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Margin="0" 
+                Click="CancelButton_Click"/>
         </Grid>
 
         <Grid 
@@ -114,7 +92,7 @@
             Margin="15,5,0,0" 
             VerticalAlignment="Top" 
             Width="50" 
-            Source="LetuShieldSmall.png"/>
+            Source="Resources/LetuShieldSmall.png"/>
 
         <Label 
         	x:Name="TitleLabel" 
@@ -124,13 +102,159 @@
         	Margin="70,5,0,0" 
         	VerticalAlignment="Top" 
         	RenderTransformOrigin="-5.174,0.576"/>
-        <Grid x:Name="openSpaceGrid" 
+
+        <Grid 
+            x:Name="openSpaceGrid" 
             HorizontalAlignment="Left" 
-            Height="500" 
+            Height="auto" 
             Margin="0,90,0,0" 
-            VerticalAlignment="Top" 
-            Width="{Binding ActualWidth, ElementName=TopBarDesign}"/>
+            VerticalAlignment="Stretch" 
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}">
 
+            <ScrollViewer 
+                x:Name="scrollingView"
+                HorizontalAlignment="Center" 
+                Height="auto" 
+                VerticalAlignment="Top" 
+                Width="{Binding ActualWidth, ElementName=TopBarDesign}"
+                Margin="0,0,0,0">
 
+                <Grid
+                    x:Name="inScrollerGrid"
+                    Height="auto"
+                    Width="auto"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+
+                    <Grid 
+                        x:Name="pageShadowGrid"
+                        HorizontalAlignment="Center" 
+                        Height="auto"
+                        MinHeight="1100" 
+                        Margin="30,30,30,30" 
+                        VerticalAlignment="Top" 
+                        Width="auto"
+                        MinWidth="250"
+                        Background="LightGray">
+
+                        <ListView
+                            x:Name="pageGrid"
+                            HorizontalAlignment="Center" 
+                            Height="auto"
+                            MinHeight="1100" 
+                            Margin="0,1,1,0" 
+                            VerticalAlignment="Top" 
+                            Width="auto"
+                            MinWidth="250"
+                            Background="White" 
+                            BorderBrush="White" 
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                            ScrollViewer.CanContentScroll="False" >
+
+                            <Label 
+                                x:Name="pageSizer" 
+                                Content="" 
+                                HorizontalAlignment="Left" 
+                                Width="850"
+                                Margin="0,45,0,0" 
+                                VerticalAlignment="Top"/>
+                            
+                            <Grid 
+                                x:Name="titleGrid"
+                                HorizontalAlignment="Center" 
+                                Height="auto" 
+                                Margin="50,0,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                                <Label 
+                                    x:Name="titlelabel" 
+                                    Content="Questionaire Title:" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="16" 
+                                    FontFamily="Calibri"/>
+
+                                <TextBox
+                                    x:Name="questionaireTitle" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="130,0,0,0" 
+                                    VerticalAlignment="Center"
+                                    Width="auto" 
+                                    MinWidth="100"
+                                    MaxWidth="500"
+                                    FontSize="16"
+                                    FontFamily="Calibri"/>
+                            </Grid>
+
+                            <Grid 
+                                x:Name="descriptionGrid"
+                                HorizontalAlignment="Center" 
+                                Height="auto" 
+                                Margin="50,0,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                                <Label 
+                                    x:Name="descriptionlabel" 
+                                    Content="Questionaire Description:" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="16" 
+                                    FontFamily="Calibri"/>
+
+                                <TextBox
+                                    x:Name="descriptionText" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="180,0,0,0" 
+                                    VerticalAlignment="Center"
+                                    Width="auto" 
+                                    MinWidth="100"
+                                    MaxWidth="500"
+                                    FontSize="16"
+                                    FontFamily="Calibri" 
+                                    AcceptsTab="True" 
+                                    AcceptsReturn="True" 
+                                    SpellCheck.IsEnabled="True"
+                                    TextWrapping="Wrap"/>
+                            </Grid>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+
+            <Menu 
+                x:Name="newMenu" 
+                HorizontalAlignment="Left" 
+                Height="98" 
+                Margin="0,0,0,-130" 
+                VerticalAlignment="Top" 
+                Width="175"
+                Background="{DynamicResource AppPrimaryBackgroundColorDark}" 
+                Visibility="Hidden" 
+                MouseLeave="Menu_MouseLeave" UseLayoutRounding="True" >
+
+                <Label 
+                    x:Name="blankResponseQuestionButton" 
+                    Style="{StaticResource dropMenuButtonStyle}"
+                    Content="Blank Response Question" 
+                    Width="165" 
+                    MouseLeftButtonUp="BlankResponseQuestionButton_MouseUp"  />
+                <Label 
+                    x:Name="ratingQuestionButton" 
+                    Style="{StaticResource dropMenuButtonStyle}"
+                    Content="Rating Scale Question" 
+                    Width="165" 
+                    MouseLeftButtonUp="RatinQuestionButton_MouseUp" />
+                <Label
+                    x:Name="multipleChoiceQuestionButton" 
+                    Style="{StaticResource dropMenuButtonStyle}"
+                    Content="Multiple Choice Question" 
+                    Width="165" MouseLeftButtonUp="MultipleChoiceButton_MouseUp" />
+            </Menu>
+        </Grid>
     </Grid>
 </Page>
