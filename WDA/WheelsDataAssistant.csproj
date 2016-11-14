@@ -65,6 +65,9 @@
     <Compile Include="HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HomePageButton.xaml.cs">
+      <DependentUpon>HomePageButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewQuestionnairePage.xaml.cs">
       <DependentUpon>NewQuestionnairePage.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomePageButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -23,7 +23,7 @@
         	HorizontalAlignment="Right" 
         	Height="60" 
         	VerticalAlignment="Top" Width="auto" 
-        	Source="WaveBackgroundBlue2.png" 
+        	Source="Resources/WaveBackgroundBlue2.png" 
         	Stretch="Fill"/>
         <Image 
         	x:Name="LetuShield" 
@@ -32,7 +32,7 @@
         	Margin="15,5,0,0" 
         	VerticalAlignment="Top" 
         	Width="50" 
-        	Source="LetuShieldSmall.png"/>
+        	Source="Resources/LetuShieldSmall.png"/>
 
         <Label 
         	x:Name="TitleLabel_Copy" 
@@ -42,6 +42,120 @@
         	Margin="70,5,0,0" 
         	VerticalAlignment="Top" 
         	RenderTransformOrigin="-5.174,0.576"/>
+
+        
+
+
+        <Grid 
+            x:Name="openSpaceGrid" 
+            HorizontalAlignment="Left" 
+            Height="auto" 
+            Margin="0,90,0,0" 
+            VerticalAlignment="Stretch" 
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}">
+
+            <ScrollViewer 
+                x:Name="scrollingView"
+                HorizontalAlignment="Center" 
+                Height="auto" 
+                VerticalAlignment="Top" 
+                Width="{Binding ActualWidth, ElementName=TopBarDesign}"
+                Margin="0,0,0,0">
+
+                <Grid
+                    x:Name="inScrollerGrid"
+                    Height="auto"
+                    Width="auto"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+
+                    <Grid 
+                        x:Name="pageShadowGrid"
+                        HorizontalAlignment="Center" 
+                        Height="auto"
+                        MinHeight="1100" 
+                        Margin="30,30,30,30" 
+                        VerticalAlignment="Top" 
+                        Width="auto"
+                        MinWidth="250"
+                        Background="LightGray">
+
+                        <ListView
+                            x:Name="pageGrid"
+                            HorizontalAlignment="Center" 
+                            Height="auto"
+                            MinHeight="1100" 
+                            Margin="0,1,1,0" 
+                            VerticalAlignment="Top" 
+                            Width="auto"
+                            MinWidth="250"
+                            Background="White" 
+                            BorderBrush="White" 
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                            ScrollViewer.CanContentScroll="False" >
+
+                            <Label 
+                                x:Name="pageSizer" 
+                                Content="" 
+                                HorizontalAlignment="Left" 
+                                Width="850"
+                                Margin="0,45,0,0" 
+                                VerticalAlignment="Top"/>
+
+                            <Grid 
+                                x:Name="titleGrid"
+                                HorizontalAlignment="Center" 
+                                Height="auto" 
+                                Margin="50,0,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                                <Label 
+                                    x:Name="titlelabel" 
+                                    Content="Questionaire Title:" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="16" 
+                                    FontFamily="Calibri"/>
+
+                                <TextBox
+                                    x:Name="questionaireTitle" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="130,0,0,0" 
+                                    VerticalAlignment="Center"
+                                    Width="auto" 
+                                    MinWidth="100"
+                                    MaxWidth="500"
+                                    FontSize="16"
+                                    FontFamily="Calibri"/>
+                            </Grid>
+
+                            <Grid 
+                                x:Name="descriptionGrid"
+                                HorizontalAlignment="Center" 
+                                Height="auto" 
+                                Margin="50,0,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                                <Label 
+                                    x:Name="instructionslabel" 
+                                    Content="Instructions:" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="16" 
+                                    FontFamily="Calibri"/>
+
+                                
+                            </Grid>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
 
         <Grid 
             x:Name="menuBar"
@@ -56,7 +170,7 @@
                 x:Name="saveButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Save Progress" 
-                Width="95"/>
+                Width="95" Click="saveButton_Click"/>
 
             <Button 
                 x:Name="saveNewButton" 
@@ -67,7 +181,7 @@
             <Button 
                 x:Name="FinishButton" 
                 Style="{StaticResource menuButtonStyle}"
-                Content="Finish" Margin="187,0,0,0"  />
+                Content="Finish" Margin="187,0,0,0" Click="FinishButton_Click"  />
 
             <Button 
                 x:Name="helpButton" 
@@ -82,95 +196,11 @@
                 x:Name="cancelButton" 
                 Style="{StaticResource menuButtonStyle}"
                 Content="Cancel" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Margin="0" 
+                Click="cancelButton_Click"/>
         </Grid>
-
-        <ScrollBar 
-            x:Name="scrollBar" 
-            HorizontalAlignment="Right" 
-            Margin="0,90,0,0" 
-            VerticalAlignment="Stretch" 
-            Width="17"/>
-
-        <Grid 
-            HorizontalAlignment="Center" 
-            Height="1100"
-            Width="800"
-            VerticalAlignment="Top" 
-            Margin="0,110,0,0"
-            Background="{StaticResource TextLightColor}" >
-
-            <Label 
-        	    x:Name="PageTitleLabel" 
-        	    Style="{StaticResource titleTextStyle}"
-        	    Content="WCQ-C Questionaire" 
-        	    HorizontalAlignment="Center" 
-        	    Margin="0,20,0,0" 
-        	    VerticalAlignment="Top" 
-                Foreground="{StaticResource TextDarkColor}"
-        	    RenderTransformOrigin="-5.174,0.576"/>
-
-            <Label 
-                x:Name="PageSubTitle" 
-                Style="{StaticResource headerTextStyle}"
-                Content="Answer all teh questions as best as possible." 
-                HorizontalAlignment="Center" 
-                Margin="0,58,0,0" 
-                VerticalAlignment="Top"/>
-            <Label 
-            	x:Name="NameLabel" 
-            	Style="{StaticResource headerTextStyle}"
-            	Content="Name:" 
-            	HorizontalAlignment="Left" 
-            	Margin="40,105,319,0" 
-            	VerticalAlignment="Top"/>
-
-            <TextBox 
-                x:Name="NameInput" 
-                Style="{StaticResource headerTextStyle}"
-                HorizontalAlignment="Left" 
-                Height="23" 
-                Margin="105,110,0,0" 
-                TextWrapping="Wrap" 
-                Text=" " 
-                VerticalAlignment="Top" 
-                Width="250"/>
-            <Label 
-            	x:Name="DOBLabel" 
-            	Style="{StaticResource headerTextStyle}"
-            	Content="Date of Birth:" 
-            	HorizontalAlignment="Left" 
-            	Margin="390,105,0,0" 
-            	VerticalAlignment="Top"/>
-            <TextBox 
-            	x:Name="DOBInput" 
-            	Style="{StaticResource ResourceKey=headerTextStyle}"
-            	HorizontalAlignment="Left" 
-            	Height="23" 
-            	Margin="500,110,0,0" 
-            	TextWrapping="Wrap" 
-            	Text=" " 
-            	VerticalAlignment="Top" 
-            	Width="250"/>
-            <Image 
-                x:Name="ExampleQuestion" 
-                HorizontalAlignment="Center" 
-                Height="165" 
-                Margin="100,150,100,0" 
-                VerticalAlignment="Top" 
-                Width="600" 
-                Source="Example question.PNG" 
-                Stretch="UniformToFill"/>
-            
-            <Slider 
-                x:Name="slider" 
-                HorizontalAlignment="Center" 
-                Margin="0,335,0,0" 
-                VerticalAlignment="Top"
-                Width="600"/>
-
-        </Grid>
-
-
     </Grid>
 </Page>
+

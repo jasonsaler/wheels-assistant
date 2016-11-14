@@ -25,6 +25,8 @@ namespace WheelsDataAssistant
         {
             InitializeComponent();
             Questionaire newQuestionaire = new Questionaire("WCQ-C", 45);
+            HomePageButton aButton = new HomePageButton("Hi", "Robot Chickens");
+            openSpaceGrid.Children.Add(aButton);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
