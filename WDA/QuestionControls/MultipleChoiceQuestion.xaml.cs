@@ -166,9 +166,14 @@ namespace WheelsDataAssistant.QuestionControls
             return questionType;
         }
 
+        public String getChosenAnswer()
+        {
+            return chosenAnswer;
+        }
+
         public String getQuestionText()
         {
-            questionText = newQuestion.Text;
+            //questionText = newQuestion.Text;
             return questionText;
         }
 

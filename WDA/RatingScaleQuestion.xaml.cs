@@ -204,9 +204,11 @@ namespace WheelsDataAssistant
             }
         }
 
-        QuestionResponse getResponse()
+        public QuestionResponse getResponse()
         {
-            return new QuestionResponse(RatingSlider.Value,  userCommentBox.Text);
+            if (userCommentBox.Text == "Enter any necessary comments here...")
+                userCommentBox.Text = "";
+            return new QuestionResponse(RatingSlider.Value*10,  userCommentBox.Text);
         }
     }
 }
