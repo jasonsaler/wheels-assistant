@@ -30,6 +30,14 @@
             Stretch="Fill"/>
 
         <Grid 
+            x:Name="openSpaceGrid"
+            HorizontalAlignment="Left"  
+            Margin="0,90,0,0" 
+            VerticalAlignment="Top" 
+            Height="500"
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}"/>
+
+        <Grid 
             x:Name="menuBar"
             HorizontalAlignment="Left" 
             Height="30"
@@ -175,12 +183,5 @@
                     MouseUp="CloseButton_MouseUp"/>
             </Grid>
         </Grid>
-        <Grid 
-            x:Name="openSpaceGrid"
-            HorizontalAlignment="Left"  
-            Margin="0,90,0,0" 
-            VerticalAlignment="Top" 
-            Height="500"
-            Width="{Binding ActualWidth, ElementName=TopBarDesign}"/>
     </Grid>
 </Page>

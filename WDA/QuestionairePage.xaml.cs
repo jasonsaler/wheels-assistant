@@ -1,21 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Microsoft.Win32;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-//using Excel = Microsoft.Office.Interop.Excel;
-//using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace WheelsDataAssistant
 {
@@ -27,9 +14,55 @@ namespace WheelsDataAssistant
         static int ClicksCount = 0;
         static int count = 2;
         string f = "records.xls";
+        Questionaire theQuestionnaire;
+
+        public QuestionairePage(Questionaire currentQuestionnaire)
+        {
+            this.theQuestionnaire = currentQuestionnaire;
+            InitializeComponent();
+            titlelabel.Content = currentQuestionnaire.getQuestionaireName();
+            loadQuestions();
+        }
+
         public QuestionairePage()
         {
             InitializeComponent();
+        }
+
+        private void loadQuestions()
+        {
+            for(int i=1; i<theQuestionnaire.getNumberOfQuestions(); i++)
+            {
+                if (theQuestionnaire.questionList[i] != null)
+                {
+                    switch (theQuestionnaire.questionList[i].getQuestionType())
+                    {
+                        case "ratingScaleQuestion":
+                            RatingScaleQuestion newRSQ = new RatingScaleQuestion(true, theQuestionnaire.questionList[i].getQuestionNumber(), theQuestionnaire.questionList[i].getQuestionText());
+                            newRSQ.setNAOption(theQuestionnaire.questionList[i].m_hasNaOption);
+                            pageGrid.Items.Add(newRSQ);
+                            break;
+                        case "BlankResponseQuestion":
+                            BlankResponseQuestion newBRQ = new BlankResponseQuestion(true, theQuestionnaire.questionList[i].getQuestionNumber(), theQuestionnaire.questionList[i].getQuestionText());
+                            newBRQ.setNAOption(theQuestionnaire.questionList[i].m_hasNaOption);
+                            pageGrid.Items.Add(newBRQ);
+                            break;
+                        case "multipleChoiceQuestion":
+                            QuestionControls.MultipleChoiceQuestion newMCQ = new QuestionControls.MultipleChoiceQuestion(true, theQuestionnaire.questionList[i].getQuestionNumber(), theQuestionnaire.questionList[i].getQuestionText(), theQuestionnaire.questionList[i].hasCommentOption);
+                            newMCQ.firstChoiceInput.Text = theQuestionnaire.questionList[i].getMCOption(0);
+                            newMCQ.secondChoiceInput.Text = theQuestionnaire.questionList[i].getMCOption(1);
+                            newMCQ.thirdChoiceInput.Text = theQuestionnaire.questionList[i].getMCOption(2);
+                            newMCQ.fourthChoiceInput.Text = theQuestionnaire.questionList[i].getMCOption(3);
+                            newMCQ.fifthChoiceInput.Text = theQuestionnaire.questionList[i].getMCOption(4);
+                            newMCQ.sixthChoiceInput.Text = theQuestionnaire.questionList[i].getMCOption(5);
+                            newMCQ.choiceVisibilityShowHide();
+                            newMCQ.setNAOption(theQuestionnaire.questionList[i].m_hasNaOption);
+                            pageGrid.Items.Add(newMCQ);
+                            break;
+                    }
+                }
+                    
+            }
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)

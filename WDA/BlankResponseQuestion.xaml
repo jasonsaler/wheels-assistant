@@ -12,6 +12,7 @@
              HorizontalAlignment="Stretch" 
              VerticalAlignment="Top">
     <Grid 
+        x:Name="wholeGrid"
         Height="auto" 
         VerticalAlignment="Top" 
         Width="auto"
@@ -30,8 +31,10 @@
                 Text="1" 
                 VerticalAlignment="Top"
                 FontFamily="Calibri"
+                FontWeight="Bold"
                 FontSize="16"
                 Foreground="Black"
+                Background="Transparent"
                 Width="auto" 
                 ToolTip="Change the number to change order" 
                 MaxLines="1" MaxLength="4" IsUndoEnabled="False" AutomationProperties.HelpText="Change the number to change the question order" />
@@ -54,7 +57,8 @@
                     Source="Resources/CloseXBlack.png" 
                     MouseEnter="CloseButton_MouseOver" 
                     MouseLeave="CloseButton_MouseLeave" 
-                    MouseUp="CloseButton_MouseUP" AutomationProperties.HelpText="Delete the question"/>
+                    MouseUp="CloseButton_MouseUP" 
+                    AutomationProperties.HelpText="Delete the question"/>
             </Grid>
 
             <CheckBox 
@@ -62,22 +66,27 @@
                 Content="N/A" 
                 HorizontalAlignment="Left" 
                 Margin="50,4,0,0" 
-                VerticalAlignment="Top" ToolTip="Select to include a Not Applicable (N/A) option" AutomationProperties.HelpText="Select to give the question an N/A option"/>
+                VerticalAlignment="Top" 
+                ToolTip="Select to include a Not Applicable (N/A) option" 
+                AutomationProperties.HelpText="Select to give the question an N/A option" 
+                Checked="NACheckBox_GotChecked" 
+                Unchecked="NACheckBox_GotUnchecked"/>
         </Grid>
 
         <Grid
             x:Name="holderGrid"
-            HorizontalAlignment="Stretch" 
+            HorizontalAlignment="Left" 
             Height="auto" 
             Margin="100,0,0,0" 
             VerticalAlignment="Stretch" 
-            Width="auto">
+            Width="auto"
+            MinWidth="100">
 
             <Grid
                 x:Name="AnswerGrid"
                 HorizontalAlignment="Right" 
                 Height="auto" 
-                Margin="220,0,0,0" 
+                Margin="200,0,0,0" 
                 VerticalAlignment="Stretch" 
                 Width="auto">
 
@@ -91,12 +100,15 @@
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Left"
                     Width="auto"
-                    MinWidth="200"
+                    MinWidth="50"
                     MaxWidth="400"
                     Margin="0,0,0,0" 
                     SpellCheck.IsEnabled="True" 
                     AcceptsReturn="True" 
-                    AcceptsTab="True" AutomationProperties.HelpText="Enter the response to the question"/>
+                    AcceptsTab="True" 
+                    AutomationProperties.HelpText="Enter the response to the question" 
+                    GotKeyboardFocus="ResponseBox_GotKeyboardFocus" 
+                    LostKeyboardFocus="ResponseBox_LostKeyboardFocus"/>
             </Grid>
 
             <Grid
@@ -104,7 +116,7 @@
                 HorizontalAlignment="Left" 
                 Height="auto" 
                 Margin="0,0,0,0" 
-                MinWidth="210"
+                MinWidth="50"
                 VerticalAlignment="Stretch" 
                 Width="auto">
 
@@ -118,7 +130,7 @@
                     VerticalAlignment="Top" 
                     Width="auto"
                     MaxWidth="200"
-                    MinWidth="100" 
+                    MinWidth="50" 
                     Margin="0,0,0,0"
                     ToolTip="Question Here" 
                     SpellCheck.IsEnabled="True" 
@@ -136,6 +148,7 @@
                     HorizontalAlignment="Right" 
                     TextWrapping="Wrap" 
                     Text="Who is your favorite friend? "
+                    FontWeight="Medium"
                     FontFamily="Calibri"
                     MaxWidth="200"
                     MinWidth="10"

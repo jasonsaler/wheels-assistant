@@ -31,7 +31,9 @@
                 VerticalAlignment="Top"
                 FontFamily="Calibri"
                 FontSize="16"
+                FontWeight="Bold"
                 Foreground="Black"
+                Background="Transparent"
                 Width="auto" 
                 ToolTip="Change the number to change order" 
                 MaxLines="1" 
@@ -55,15 +57,19 @@
                     Source="Resources/CloseXBlack.png" 
                     MouseEnter="CloseButton_MouseOver" 
                     MouseLeave="CloseButton_MouseLeave" 
-                    MouseUp="CloseButton_MouseUP" AutomationProperties.HelpText="Delete this question"/>
+                    MouseUp="CloseButton_MouseUP" 
+                    AutomationProperties.HelpText="Delete this question"/>
             </Grid>
-            
+
             <CheckBox 
                 x:Name="naCheckbox" 
                 Content="N/A" 
                 HorizontalAlignment="Left" 
                 Margin="0,37,0,0" 
-                VerticalAlignment="Top" AutomationProperties.HelpText="Select to allow a N/A option on this question"/>
+                VerticalAlignment="Top" 
+                AutomationProperties.HelpText="Select to allow a N/A option on this question"
+                Checked="NACheckBox_GotChecked" 
+                Unchecked="NACheckBox_GotUnchecked"/>
         </Grid>
 
         <Grid 
@@ -92,7 +98,7 @@
                     FontSize="16"
                     Foreground="Black"
                     Visibility="Hidden" 
-                    FontWeight="Bold"/>
+                    FontWeight="Medium"/>
 
                 <TextBox
                     x:Name="newQuestion" 
@@ -109,6 +115,7 @@
                     AutomationProperties.HelpText="Enter the question" 
                     Foreground="{StaticResource AppPrimaryBackgroundColorLight}"
                     Text="Enter the question here..."
+                    MaxWidth="800"
                     GotKeyboardFocus="newQuestionBox_gotKeyboardFocus" 
                     LostKeyboardFocus="newQuestionBox_LostKeyboardFocus" />
             </Grid>
@@ -119,78 +126,63 @@
                 Width="auto"
                 HorizontalAlignment="Stretch"
                 Margin="30,0,30,60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock 
+                    x:Name="textBlock" 
+                    HorizontalAlignment="Center" 
+                    Grid.ColumnSpan="1" 
+                    Grid.Column="0"
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="E/F" 
+                    VerticalAlignment="Top"/>
+                
+                <TextBlock 
+                    x:Name="textBlock1" 
+                    Grid.ColumnSpan="1" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="D" 
+                    VerticalAlignment="Top"/>
+                
+                <TextBlock 
+                    x:Name="textBlock2" 
+                    Grid.ColumnSpan="1" 
+                    Grid.Column="2" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="C" 
+                    VerticalAlignment="Top"/>
+                
+                <TextBlock 
+                    x:Name="textBlock3" 
+                    Grid.ColumnSpan="1" 
+                    Grid.Column="3" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="B" 
+                    VerticalAlignment="Top"/>
 
-                <Grid
-                    x:Name="bBox"
-                    Height="auto" 
-                    VerticalAlignment="Bottom" 
-                    Width="100"
-                    HorizontalAlignment="Left"
-                    Margin="0,0,0,5">
-
-                    <TextBlock
-                        Text="B"
-                        Width="auto"
-                        Height="auto"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center" 
-                        FontFamily="Calibri" 
-                        FontSize="14"/>
-
-                    <TextBlock
-                        Text="A"
-                        Width="auto"
-                        Height="auto"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        FontFamily="Calibri" 
-                        FontSize="14"/>
-
-                </Grid>
-
-                <Grid
-                    Height="auto" 
-                    VerticalAlignment="Bottom" 
-                    Width="auto"
-                    HorizontalAlignment="Center"
-                    Margin="0,0,0,5">
-
-                    <TextBlock
-                        Text="C"
-                        Width="auto"
-                        Height="auto"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" 
-                        FontFamily="Calibri" 
-                        FontSize="14"/>
-                </Grid>
-
-                <Grid
-                    x:Name="dBox"
-                    Height="auto" 
-                    VerticalAlignment="Bottom" 
-                    Width="100"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,0,5">
-
-                    <TextBlock
-                        Text="D"
-                        Width="auto"
-                        Height="auto"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        FontFamily="Calibri" 
-                        FontSize="14"/>
-
-                    <TextBlock
-                        Text="E/F"
-                        Width="auto"
-                        Height="auto"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center" 
-                        FontFamily="Calibri" 
-                        FontSize="14"/>
-                </Grid>
+                <TextBlock 
+                    x:Name="textBlock4" 
+                    Grid.ColumnSpan="1" 
+                    Grid.Column="4" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="A" 
+                    VerticalAlignment="Top"/>
             </Grid>
 
             <Grid 
@@ -264,7 +256,10 @@
                     SpellCheck.IsEnabled="True" 
                     MaxLines="2" 
                     TextWrapping="WrapWithOverflow" 
-                    MinLines="2" AutomationProperties.HelpText="Enter any additional comments as necessary"/>
+                    MinLines="2" 
+                    AutomationProperties.HelpText="Enter any additional comments as necessary"
+                    GotKeyboardFocus="ResponseBox_GotKeyboardFocus" 
+                    LostKeyboardFocus="ResponseBox_LostKeyboardFocus"/>
             </Grid>
         </Grid>
     </Grid>

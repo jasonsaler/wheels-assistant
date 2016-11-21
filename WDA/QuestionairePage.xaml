@@ -104,35 +104,6 @@
                                 VerticalAlignment="Top"/>
 
                             <Grid 
-                                x:Name="titleGrid"
-                                HorizontalAlignment="Center" 
-                                Height="auto" 
-                                Margin="50,0,50,0" 
-                                VerticalAlignment="Top" 
-                                Width="auto">
-
-                                <Label 
-                                    x:Name="titlelabel" 
-                                    Content="Questionaire Title:" 
-                                    HorizontalAlignment="Left" 
-                                    Margin="0,0,0,0" 
-                                    VerticalAlignment="Center" 
-                                    FontSize="16" 
-                                    FontFamily="Calibri"/>
-
-                                <TextBox
-                                    x:Name="questionaireTitle" 
-                                    HorizontalAlignment="Left" 
-                                    Margin="130,0,0,0" 
-                                    VerticalAlignment="Center"
-                                    Width="auto" 
-                                    MinWidth="100"
-                                    MaxWidth="500"
-                                    FontSize="16"
-                                    FontFamily="Calibri"/>
-                            </Grid>
-
-                            <Grid 
                                 x:Name="descriptionGrid"
                                 HorizontalAlignment="Center" 
                                 Height="auto" 
@@ -152,6 +123,24 @@
                                 
                             </Grid>
                         </ListView>
+
+                        <Grid 
+                                x:Name="titleGrid"
+                                HorizontalAlignment="Center" 
+                                Height="auto" 
+                                Margin="50,40,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                            <Label 
+                                    x:Name="titlelabel" 
+                                    Content="Questionaire Title" 
+                                    HorizontalAlignment="Center" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="19" 
+                                    FontFamily="Calibri"/>
+                        </Grid>
                     </Grid>
                 </Grid>
             </ScrollViewer>

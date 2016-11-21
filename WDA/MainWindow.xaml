@@ -15,6 +15,6 @@
             Source="HomePage.xaml" 
             Icon="Resources/W Icon Trans.png" 
             MinHeight="300" 
-            MinWidth="500"> 
+            MinWidth="560"> 
 
 </NavigationWindow>
