@@ -21,15 +21,27 @@
             Width="auto"
             HorizontalAlignment="Left">
 
+            <CheckBox 
+            	    x:Name="commentCheckBox" 
+            	    Content="Add comment box" 
+            	    HorizontalAlignment="Left" 
+            	    Margin="0,0,0,0" 
+            	    VerticalAlignment="bottom" 
+                    AutomationProperties.HelpText="Select to give the question a comment Box option" 
+                    Unchecked="CommentsOption_Unchecked" 
+                    Checked="CommentsOption_Checked"/>
+
             <TextBox
                 x:Name="questionNumber" 
-                HorizontalAlignment="Stretch" 
+                HorizontalAlignment="Left" 
                 Margin="0,0,0,0"  
                 Text="1" 
                 VerticalAlignment="Top"
                 FontFamily="Calibri"
                 FontSize="16"
+                FontWeight="Bold"
                 Foreground="Black"
+                Background="Transparent"
                 Width="auto" 
                 ToolTip="Change the number to change order" 
                 MaxLines="1" 
@@ -101,7 +113,9 @@
                 Content="N/A" 
                 HorizontalAlignment="Left" 
                 Margin="0,37,0,0" 
-                VerticalAlignment="Top" AutomationProperties.HelpText="Select to give the question an N/A option"/>
+                VerticalAlignment="Top" 
+                AutomationProperties.HelpText="Select to give the question an N/A option" Checked="naOption_Checked" Unchecked="NAOption_Unchecked"/>
+
         </Grid>
 
         <Grid 
@@ -113,10 +127,10 @@
 
             <Grid 
                 Height="auto" 
-                VerticalAlignment="Stretch" 
+                VerticalAlignment="Top" 
                 Width="auto"
                 HorizontalAlignment="Stretch"
-                Margin="0,0,0,110">
+                Margin="0,0,0,0">
 
                 <TextBlock 
                     x:Name="Question" 
@@ -129,8 +143,7 @@
                     Width="auto"
                     FontSize="16"
                     Foreground="Black"
-                    Visibility="Hidden" 
-                    FontWeight="Bold"/>
+                    Visibility="Hidden" />
 
                 <TextBox
                     x:Name="newQuestion" 
@@ -155,10 +168,10 @@
             <Grid 
                 x:Name="buttonsGrid"
                 Height="auto" 
-                VerticalAlignment="Bottom" 
+                VerticalAlignment="Top" 
                 Width="auto"
                 HorizontalAlignment="Stretch"
-                Margin="0,50,0,80">
+                Margin="0,35,0,80">
 
                 <Grid 
                     x:Name="firstButton"
@@ -166,7 +179,9 @@
 
                     <RadioButton 
                         x:Name="firstChoice" 
-                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+                        Style="{StaticResource multiChoiceButtonStyle}" 
+                        AutomationProperties.HelpText="Select the best option " 
+                        Checked="RadioButton_Checked"/>
 
                     <TextBox
                         x:Name="firstChoiceInput" 
@@ -183,7 +198,9 @@
 
                     <RadioButton 
                         x:Name="secondChoice" 
-                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+                        Style="{StaticResource multiChoiceButtonStyle}" 
+                        AutomationProperties.HelpText="Select the best option " 
+                        Checked="RadioButton_Checked"/>
 
                     <TextBox
                         x:Name="secondChoiceInput" 
@@ -200,7 +217,9 @@
 
                     <RadioButton 
                         x:Name="thirdChoice" 
-                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+                        Style="{StaticResource multiChoiceButtonStyle}" 
+                        AutomationProperties.HelpText="Select the best option " 
+                        Checked="RadioButton_Checked"/>
 
                     <TextBox
                         x:Name="thirdChoiceInput" 
@@ -217,7 +236,7 @@
 
                     <RadioButton 
                         x:Name="fourthChoice" 
-                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option " Checked="RadioButton_Checked"/>
 
                     <TextBox
                         x:Name="fourthChoiceInput" 
@@ -235,7 +254,9 @@
 
                     <RadioButton 
                         x:Name="fifthdChoice" 
-                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+                        Style="{StaticResource multiChoiceButtonStyle}" 
+                        AutomationProperties.HelpText="Select the best option " 
+                        Checked="RadioButton_Checked"/>
 
                     <TextBox
                         x:Name="fifthChoiceInput" 
@@ -253,7 +274,9 @@
 
                     <RadioButton 
                         x:Name="sixthChoice" 
-                        Style="{StaticResource multiChoiceButtonStyle}" AutomationProperties.HelpText="Select the best option "/>
+                        Style="{StaticResource multiChoiceButtonStyle}" 
+                        AutomationProperties.HelpText="Select the best option " 
+                        Checked="RadioButton_Checked"/>
 
                     <TextBox
                         x:Name="sixthChoiceInput" 
@@ -283,7 +306,8 @@
                     FontFamily="Calibri"
                     Width="auto"
                     FontSize="16"
-                    Foreground="Black"/>
+                    Foreground="Black"
+                    Visibility="Collapsed"/>
 
                 <TextBox
                     x:Name="userCommentBox" 
@@ -302,7 +326,9 @@
                     SpellCheck.IsEnabled="True" 
                     MaxLines="2" 
                     TextWrapping="WrapWithOverflow" 
-                    MinLines="2" AutomationProperties.HelpText="Enter any comments if necessary"/>
+                    MinLines="2" 
+                    Visibility="Collapsed"
+                    AutomationProperties.HelpText="Enter any comments if necessary" GotKeyboardFocus="CommentBox_GotKeyboardFocus" LostKeyboardFocus="CommentBox_LostKeyboardFocus"/>
             </Grid>
         </Grid>
     </Grid>

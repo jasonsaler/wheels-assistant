@@ -82,7 +82,34 @@ namespace WheelsDataAssistant
 
         private void finishButton_Click(object sender, RoutedEventArgs e)
         {
+            if (SaveNewQuestionnaireProgress() == true)
+            {
+                if (Save() == true)
+                {
+                    if (descriptionText.Text == "")
+                    {
+                        ToastNotification progressSavedToast = new ToastNotification("Questionnaire saved successfully, however it is recommended to include a description", 7, 0);
+                        progressSavedToast.Visibility = Visibility.Visible;
+                        openSpaceGrid.Children.Add(progressSavedToast);
+                    }
+                    else
+                    {
+                        ToastNotification progressSavedToast = new ToastNotification("Progress saved sucessfully", 7);
+                        progressSavedToast.Visibility = Visibility.Visible;
+                        openSpaceGrid.Children.Add(progressSavedToast);
+                    }
+                }
+                else
+                {
+                    ToastNotification progressSavedToast = new ToastNotification("Failed to save progress; Serialization error", 7, -1);
+                    progressSavedToast.Visibility = Visibility.Visible;
+                    openSpaceGrid.Children.Add(progressSavedToast);
+                }
+            }
 
+            QuestionairePage goQuestionnaire = new QuestionairePage(m_Questionnaire);
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            navService.Navigate(goQuestionnaire);
         }
 
         private void SaveProgressButton_Click(object sender, RoutedEventArgs e)
@@ -167,6 +194,8 @@ namespace WheelsDataAssistant
                     {
                         return false;
                     }
+                    QuestionStencil questionInfo = new QuestionStencil(currentQuestion.getQuestionType(), currentQuestion.getQuestionText(), Convert.ToInt32(currentQuestion.questionNumber.Text), currentQuestion.hasNaOption);
+                    m_currentQuestionaire.addQuestion(Convert.ToInt32(currentQuestion.questionNumber.Text), questionInfo);
                 }
                 else if (m_currentQuestionType == temporaryBRQ.getQuestionType())
                 {
@@ -175,6 +204,9 @@ namespace WheelsDataAssistant
                     {
                         return false;
                     }
+
+                    QuestionStencil questionInfo = new QuestionStencil(currentQuestion.getQuestionType(), currentQuestion.getQuestionText(), Convert.ToInt32(currentQuestion.questionNumber.Text), currentQuestion.hasNaOption);
+                    m_currentQuestionaire.addQuestion(Convert.ToInt32(currentQuestion.questionNumber.Text), questionInfo);
                 }
                 else
                 {
@@ -183,8 +215,11 @@ namespace WheelsDataAssistant
                     {
                         return false;
                     }
-                }
 
+                    QuestionStencil questionInfo = new QuestionStencil(currentQuestion.getQuestionType(), currentQuestion.getQuestionText(), Convert.ToInt32(currentQuestion.questionNumber.Text), currentQuestion.hasNaOption);
+                    m_currentQuestionaire.addQuestion(Convert.ToInt32(currentQuestion.questionNumber.Text), questionInfo);
+                }
+                
             }
             m_Questionnaire = m_currentQuestionaire;
             return true;
@@ -375,7 +410,7 @@ namespace WheelsDataAssistant
 
         private void MultipleChoiceButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            QuestionControls.MultipleChoiceQuestion multiChoiceQuestion = new QuestionControls.MultipleChoiceQuestion(false, m_QuestionNumber, null);
+            QuestionControls.MultipleChoiceQuestion multiChoiceQuestion = new QuestionControls.MultipleChoiceQuestion(false, m_QuestionNumber, null, false);
             m_QuestionNumber++;
             m_listViewSize++;
             pageGrid.Items.Add(multiChoiceQuestion);

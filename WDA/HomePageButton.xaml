@@ -8,17 +8,57 @@
              d:DesignHeight="300" 
              d:DesignWidth="300">
     <Grid>
-        <Button 
-            x:Name="button" 
-            Background= "Azure"  
-            FontSize="17" 
-            Content="Button" 
-            HorizontalAlignment="Left" 
-            Height="215" 
-            Margin="10,39,0,0" 
-            VerticalAlignment="Top" 
-            Width="280" 
-            Click="button_Click"/>
 
+        <Button  x:Name="button" 
+                 Width="280" 
+                 Height="220" 
+                 BorderBrush="Black" Click="Button_Click" >
+
+            <StackPanel>
+
+                <Grid>
+                    <TextBlock 
+                                x:Name="text1" 
+                                Text="Title" 
+                                FontSize="18" 
+                                Style="{StaticResource headerTextStyle}"
+                                TextAlignment="Center" 
+                                Margin="0,8,0,169" 
+                                HorizontalAlignment="Center" 
+                                RenderTransformOrigin="1.249,-2.381" 
+                                TextWrapping="Wrap" 
+                                Width="276"  />
+
+                    <TextBlock 
+                                x:Name="text2" 
+                                Text="Desc" 
+                                TextAlignment="Center" 
+                                HorizontalAlignment="Center" 
+                                Margin="10,142,10,10" 
+                                TextWrapping="Wrap" 
+                                Width="256" />
+                    <!--  <Image Grid.Row="0" Source="Add icone here" /> -->
+                </Grid>
+            </StackPanel>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#BDE7FC"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Azure"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

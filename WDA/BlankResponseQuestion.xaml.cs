@@ -35,15 +35,14 @@ namespace WheelsDataAssistant
             InitializeComponent();
         }
 
-        public BlankResponseQuestion(Boolean forQuestionaire, int questionNumber, String questionText)
+        public BlankResponseQuestion(Boolean forQuestionaire, int questionNumber, String questionTexts)
         {
             this.isForQuestionaire = forQuestionaire;
             this.questionLocationNumber = questionNumber;
-            this.questionText = questionText;
+            this.questionText = questionTexts;
             InitializeComponent();
-            initializeQuestionaireType();
             initializeData();
-
+            initializeQuestionaireType();
         }
 
 
@@ -71,7 +70,11 @@ namespace WheelsDataAssistant
                 questionTextInput.Visibility = Visibility.Collapsed;
                 deletIconBackground.Visibility = Visibility.Collapsed;
                 questionNumber.IsReadOnly = true;
+                questionNumber.BorderThickness = new Thickness(0);
+                questionNumber.Text = questionLocationNumber.ToString() + ".";
                 questionTextOutput.Visibility = Visibility.Visible;
+                responseText.Text = "Enter response here...";
+                responseText.Foreground = (Brush)Application.Current.MainWindow.FindResource("AppPrimaryBackgroundColorLight");
             }
             else
             {
@@ -87,7 +90,21 @@ namespace WheelsDataAssistant
 
         public String getQuestionText()
         {
+            questionText = questionTextInput.Text;
             return questionText;
+        }
+
+        public void setNAOption(Boolean option)
+        {
+            hasNaOption = option;
+            if(hasNaOption == false)
+            {
+                naCheckbox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                naCheckbox.Visibility = Visibility.Visible;
+            }
         }
 
         private void CloseButton_MouseOver(object sender, MouseEventArgs e)
@@ -123,6 +140,58 @@ namespace WheelsDataAssistant
                 questionTextInput.Text = "Enter the question here...";
                 questionTextInput.Foreground = (Brush)Application.Current.MainWindow.FindResource("CloseButtonRed"); ;
             }
+        }
+
+        private void ResponseBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (responseText.Text == "Enter response here...")
+            {
+                responseText.Text = "";
+                responseText.Foreground = (Brush)Application.Current.MainWindow.FindResource("TextDarkColor");
+            }
+        }
+
+        private void ResponseBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (responseText.Text == "")
+            {
+                responseText.Text = "Enter response here...";
+                responseText.Foreground = (Brush)Application.Current.MainWindow.FindResource("CloseButtonRed"); ;
+            }
+        }
+
+        private void NACheckBox_GotChecked(object sender, RoutedEventArgs e)
+        {
+            if (!isForQuestionaire)
+            {
+                hasNaOption = true;
+            }
+            else
+            {
+                responseText.Background = new SolidColorBrush(Colors.LightGray);
+                responseText.Foreground = new SolidColorBrush(Colors.Black);
+                responseText.IsReadOnly = true;
+                responseText.Text = "Not Applicable";
+            }
+        }
+
+        private void NACheckBox_GotUnchecked(object sender, RoutedEventArgs e)
+        {
+            if (!isForQuestionaire)
+            {
+                hasNaOption = false;
+            }
+            else
+            {
+                responseText.Background = new SolidColorBrush(Colors.White);
+                responseText.IsReadOnly = false;
+                responseText.Text = "Enter response here...";
+            }
+        }
+
+        QuestionResponse getResponse()
+        {
+            return new QuestionResponse(responseText.Text);
         }
     }
 }

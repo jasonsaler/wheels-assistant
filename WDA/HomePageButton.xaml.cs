@@ -21,8 +21,9 @@ namespace WheelsDataAssistant
     public partial class HomePageButton : UserControl
     {
         String title0;
-        String Description0;
-        public event EventHandler ButtonClick;
+        String description0;
+        Questionaire questionair0;
+        //   public event EventHandler ButtonClick;
 
         public HomePageButton()
         {
@@ -30,31 +31,35 @@ namespace WheelsDataAssistant
             activate();
         }
 
-        public HomePageButton(String title, String description)
+        public HomePageButton(String title, String description, Questionaire questionair)
         {
             this.title0 = title;
-            this.Description0 = description;
+            this.description0 = description;
+            this.questionair0 = questionair;
             InitializeComponent();
             activate();
+
         }
         private void activate()
         {
-            if (title0 != null && Description0 != null)
+            if (title0 != null && description0 != null && questionair0 != null)
             {
-                button.Content = title0 + System.Environment.NewLine + System.Environment.NewLine + Description0;
+                text1.Text = title0;
+                text2.Text = description0;
+
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void customClick()
         {
-            if (this.ButtonClick != null)
-            {
-                this.ButtonClick(this, e);
-            }
-            QuestionairePage goQuestionnaire = new QuestionairePage();
+            QuestionairePage goQuestionnaire = new QuestionairePage(questionair0);
             NavigationService navService = NavigationService.GetNavigationService(this);
             navService.Navigate(goQuestionnaire);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            customClick();
+        }
     }
 }
-

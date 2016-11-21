@@ -46,8 +46,6 @@ namespace WheelsDataAssistant
         {
             InitializeComponent();
             newQuestion.Width = 800;
-            bBox.Width = (RatingSlider.Width / 4);
-            dBox.Width = (RatingSlider.Width / 4);
         }
 
         public RatingScaleQuestion(Boolean forQuestionaire, int questionNumber, String questionText)
@@ -57,9 +55,8 @@ namespace WheelsDataAssistant
             this.questionText = questionText;
             InitializeComponent();
             newQuestion.Width = 800;
-            initializeQuestionaireType();
             initializeData();
-
+            initializeQuestionaireType();
         }
 
         private void initializeData()
@@ -73,10 +70,16 @@ namespace WheelsDataAssistant
         {
             if(isForQuestionaire)
             {
-                newQuestion.Visibility = Visibility.Collapsed;
+                newQuestion.Visibility = Visibility.Hidden;
+                Question.Visibility = Visibility.Visible;
                 deletIconBackground.Visibility = Visibility.Collapsed;
                 questionNumber.IsReadOnly = true;
-                Question.Visibility = Visibility.Visible;
+                questionNumber.BorderThickness = new Thickness(0);
+                questionNumber.Text = questionLocationNumber.ToString() + ".";
+                userCommentBox.Background = new SolidColorBrush(Colors.White);
+                userCommentBox.Foreground = (Brush)Application.Current.MainWindow.FindResource("AppPrimaryBackgroundColorLight");
+                userCommentBox.Text = "Enter any necessary comments here...";
+                userCommentBox.IsReadOnly = false;
             }
         }
 
@@ -110,13 +113,25 @@ namespace WheelsDataAssistant
 
         public String getQuestionText()
         {
+            questionText = newQuestion.Text;
             return questionText;
+        }
+
+        public void setNAOption(Boolean option)
+        {
+            hasNaOption = option;
+            if (hasNaOption == false)
+            {
+                naCheckbox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                naCheckbox.Visibility = Visibility.Visible;
+            }
         }
 
         public void resize()
         {
-            bBox.Width = (RatingSlider.Width / 4);
-            dBox.Width = (RatingSlider.Width / 4);
             //newQuestion.Width = userCommentBox.Width;
         }
 
@@ -136,6 +151,62 @@ namespace WheelsDataAssistant
                 newQuestion.Text = "Enter the question here...";
                 newQuestion.Foreground = (Brush)Application.Current.MainWindow.FindResource("CloseButtonRed"); ;
             }
+        }
+
+        private void ResponseBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (userCommentBox.Text == "Enter any necessary comments here...")
+            {
+                userCommentBox.Text = "";
+                userCommentBox.Foreground = (Brush)Application.Current.MainWindow.FindResource("TextDarkColor");
+            }
+        }
+
+        private void ResponseBox_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (userCommentBox.Text == "")
+            {
+                userCommentBox.Text = "Enter any necessary comments here...";
+                userCommentBox.Foreground = (Brush)Application.Current.MainWindow.FindResource("AppPrimaryBackgroundColorLight");
+            }
+        }
+
+        private void NACheckBox_GotChecked(object sender, RoutedEventArgs e)
+        {
+            if (!isForQuestionaire)
+            {
+                hasNaOption = true;
+            }
+            else
+            {
+                userCommentBox.Background = new SolidColorBrush(Colors.LightGray);
+                userCommentBox.Foreground = new SolidColorBrush(Colors.Black);
+                userCommentBox.IsReadOnly = true;
+                userCommentBox.Text = "Not Applicable";
+                RatingSlider.Value = 0;
+                RatingSlider.IsEnabled = false;
+            }
+        }
+
+        private void NACheckBox_GotUnchecked(object sender, RoutedEventArgs e)
+        {
+            if (!isForQuestionaire)
+            {
+                hasNaOption = false;
+            }
+            else
+            {
+                userCommentBox.Background = new SolidColorBrush(Colors.White);
+                userCommentBox.Foreground = (Brush)Application.Current.MainWindow.FindResource("AppPrimaryBackgroundColorLight");
+                userCommentBox.IsReadOnly = false;
+                userCommentBox.Text = "Enter any necessary comments here...";
+                RatingSlider.IsEnabled = true;
+            }
+        }
+
+        QuestionResponse getResponse()
+        {
+            return new QuestionResponse(RatingSlider.Value,  userCommentBox.Text);
         }
     }
 }
