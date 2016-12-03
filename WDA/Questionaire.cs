@@ -15,7 +15,7 @@ namespace WheelsDataAssistant
     {
         private String questionaireName;
         private String description;
-        private String instructions;
+        private String instructions { get; set; }
         private int questionaireId;
         private int numberOfQuestions = 0;
         public QuestionStencil[] questionList;
@@ -46,6 +46,29 @@ namespace WheelsDataAssistant
             }
         }
 
+        // When the user saves progress, the same questions will be re-added to the same dictionary and list
+        // Just with the new responses. This will cause problems, so reset the dictionary and list first.
+        public void clearDictionaryForNewData()
+        {
+            _userData = new Dictionary<string, string>();
+            _questionResponses = new List<QuestionResponse>();
+        }
+
+        internal String getInstructions()
+        {
+            return instructions;
+        }
+
+        public String getTitle()
+        {
+            return questionaireName;
+        }
+
+        public String getDescription()
+        {
+            return description;
+        }
+
         // A list of the questions associated with the questionnaire. 
         public List<QuestionResponse> QuestionResponses
         {
@@ -69,10 +92,12 @@ namespace WheelsDataAssistant
         /// This constructor creates a new questionnaire with a name
         /// and a number of questions which willbe added later. 
         /// </summary>
-        public Questionaire(String questionaireName, int totalQuestions )
+        public Questionaire(String questionaireName, int totalQuestions, String questionaireType, String questionaireInstruction )
         {
             this.questionaireName = questionaireName;
             this.numberOfQuestions = totalQuestions;
+            this.instructions = questionaireInstruction;
+            this.Type = questionaireType;
             questionList = new QuestionStencil[numberOfQuestions+1];
             initializeArray();
         }
@@ -256,7 +281,7 @@ namespace WheelsDataAssistant
                     Source: range,
                     CategoryTitle: "Question Number"
                     );
-                chart.Axes(Microsoft.Office.Interop.Excel.XlAxisType.xlValue).MaximumScale = 100;
+                chart.Axes(Microsoft.Office.Interop.Excel.XlAxisType.xlValue).MaximumScale = 10;
                 chart.Axes(Microsoft.Office.Interop.Excel.XlAxisType.xlValue).MinimumScale = 0;
 
                 // TODO: Fix autoformat

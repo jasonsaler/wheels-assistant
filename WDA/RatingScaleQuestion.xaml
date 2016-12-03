@@ -94,6 +94,7 @@
                     Text="This is the Question?" 
                     VerticalAlignment="Top"
                     FontFamily="Calibri"
+                    MaxWidth="800"
                     Width="auto"
                     FontSize="16"
                     Foreground="Black"
@@ -133,7 +134,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <TextBlock 
                     x:Name="textBlock" 
                     HorizontalAlignment="Center" 
@@ -143,7 +144,7 @@
                     TextWrapping="Wrap" 
                     Text="E/F" 
                     VerticalAlignment="Top"/>
-                
+
                 <TextBlock 
                     x:Name="textBlock1" 
                     Grid.ColumnSpan="1" 
@@ -153,7 +154,7 @@
                     TextWrapping="Wrap" 
                     Text="D" 
                     VerticalAlignment="Top"/>
-                
+
                 <TextBlock 
                     x:Name="textBlock2" 
                     Grid.ColumnSpan="1" 
@@ -163,7 +164,7 @@
                     TextWrapping="Wrap" 
                     Text="C" 
                     VerticalAlignment="Top"/>
-                
+
                 <TextBlock 
                     x:Name="textBlock3" 
                     Grid.ColumnSpan="1" 
@@ -191,6 +192,10 @@
                 Width="auto"
                 HorizontalAlignment="Stretch"
                 Margin="0,10,0,80">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*"/>
+                    <ColumnDefinition Width="147*"/>
+                </Grid.ColumnDefinitions>
 
                 <Slider 
                     x:Name="RatingSlider" 
@@ -199,7 +204,7 @@
                     MinWidth="200"
                     Width="auto" 
                     Margin="30,25,30,0"
-                    Foreground="{StaticResource AppSecondaryBackgroundColorDark}" AutomationProperties.HelpText="Slide to give a rating from A(Excellent) to E/F(very poor)"/>
+                    Foreground="{StaticResource AppSecondaryBackgroundColorDark}" AutomationProperties.HelpText="Slide to give a rating from A(Excellent) to E/F(very poor)" Grid.ColumnSpan="2"/>
 
                 <Image 
                     x:Name="sadImage" 
@@ -216,7 +221,7 @@
                     Width="20"
                     Margin="0,25,0,0" 
                     VerticalAlignment="Top" 
-                    Source="Resources/happyFaceSmall.png"/>
+                    Source="Resources/happyFaceSmall.png" Grid.Column="1"/>
             </Grid>
 
             <Grid 

@@ -97,3 +97,6 @@ C:\Users\Jason\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\
 C:\Users\Jason\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\QuestionControls\MultipleChoiceQuestion.baml
 C:\Users\jsaler\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\HomePageButton.g.cs
 C:\Users\jsaler\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\HomePageButton.baml
+C:\Users\Jason\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\HomePageButton.g.cs
+C:\Users\Jason\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\WheelsDataAssistant.csproj.ResolveComReference.cache
+C:\Users\Jason\OneDrive\School Work\Software Engineering II\WheelsDataAssistant\WDA\obj\Debug\HomePageButton.baml

@@ -25,7 +25,7 @@ namespace WheelsDataAssistant
     /// 
     public partial class NewQuestionnairePage : Page
     {
-        static int s_numberOfConstantListItems = 3;
+        static int s_numberOfConstantListItems = 5;
 
         int m_QuestionGridLocation = 0;
         int m_QuestionNumber = 1;
@@ -98,6 +98,11 @@ namespace WheelsDataAssistant
                         progressSavedToast.Visibility = Visibility.Visible;
                         openSpaceGrid.Children.Add(progressSavedToast);
                     }
+
+                    HomePageButton sendButton = new HomePageButton(m_Questionnaire);
+                    HomePage goHome = new HomePage(sendButton);
+                    NavigationService navService = NavigationService.GetNavigationService(this);
+                    navService.Navigate(goHome);
                 }
                 else
                 {
@@ -106,10 +111,6 @@ namespace WheelsDataAssistant
                     openSpaceGrid.Children.Add(progressSavedToast);
                 }
             }
-
-            QuestionairePage goQuestionnaire = new QuestionairePage(m_Questionnaire);
-            NavigationService navService = NavigationService.GetNavigationService(this);
-            navService.Navigate(goQuestionnaire);
         }
 
         private void SaveProgressButton_Click(object sender, RoutedEventArgs e)
@@ -149,8 +150,22 @@ namespace WheelsDataAssistant
                 openSpaceGrid.Children.Add(progressSavedToast);
                 return false;
             }
+            else if(questionaireType.Text == "")
+            {
+                ToastNotification progressSavedToast = new ToastNotification("Questionnaire must contain a type", 7, -1);
+                progressSavedToast.Visibility = Visibility.Visible;
+                openSpaceGrid.Children.Add(progressSavedToast);
+                return false;
+            }
+            else if(questionaireInstruction.Text == "")
+            {
+                ToastNotification progressSavedToast = new ToastNotification("Questionnaire must contain instructions", 7, -1);
+                progressSavedToast.Visibility = Visibility.Visible;
+                openSpaceGrid.Children.Add(progressSavedToast);
+                return false;
+            }
 
-            m_currentQuestionaire = new Questionaire(questionaireTitle.Text, m_QuestionNumber);
+            m_currentQuestionaire = new Questionaire(questionaireTitle.Text, m_QuestionNumber, questionaireType.Text, questionaireInstruction.Text);
             m_currentQuestionaire.setDescription(descriptionText.Text);
 
             m_count = s_numberOfConstantListItems;

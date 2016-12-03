@@ -137,7 +137,7 @@
                         MinWidth="250"
                         Background="LightGray">
 
-                        <ListView
+                        <ItemsControl
                             x:Name="pageGrid"
                             HorizontalAlignment="Center" 
                             Height="auto"
@@ -190,8 +190,37 @@
                             </Grid>
 
                             <Grid 
-                                x:Name="descriptionGrid"
+                                x:Name="typeGrid"
                                 HorizontalAlignment="Center" 
+                                Height="auto" 
+                                Margin="50,0,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                                <Label 
+                                    x:Name="typelabel" 
+                                    Content="Questionaire Type (A four letter abreviation):" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="16" 
+                                    FontFamily="Calibri"/>
+
+                                <TextBox
+                                    x:Name="questionaireType" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="320,0,0,0" 
+                                    VerticalAlignment="Center"
+                                    Width="auto" 
+                                    MinWidth="100"
+                                    MaxWidth="500"
+                                    FontSize="16"
+                                    FontFamily="Calibri" MaxLength="4"/>
+                            </Grid>
+
+                            <Grid 
+                                x:Name="descriptionGrid"
+                                HorizontalAlignment="Left" 
                                 Height="auto" 
                                 Margin="50,0,50,0" 
                                 VerticalAlignment="Top" 
@@ -221,7 +250,36 @@
                                     SpellCheck.IsEnabled="True"
                                     TextWrapping="Wrap"/>
                             </Grid>
-                        </ListView>
+
+                            <Grid 
+                                x:Name="instructionGrid"
+                                HorizontalAlignment="Left" 
+                                Height="auto" 
+                                Margin="50,0,50,0" 
+                                VerticalAlignment="Top" 
+                                Width="auto">
+
+                                <Label 
+                                    x:Name="instructionlabel" 
+                                    Content="Questionaire Instructions:" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="16" 
+                                    FontFamily="Calibri"/>
+
+                                <TextBox
+                                    x:Name="questionaireInstruction" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="180,0,0,0" 
+                                    VerticalAlignment="Center"
+                                    Width="auto" 
+                                    MinWidth="100"
+                                    MaxWidth="500"
+                                    FontSize="16"
+                                    FontFamily="Calibri"/>
+                            </Grid>
+                        </ItemsControl>
                     </Grid>
                 </Grid>
             </ScrollViewer>
