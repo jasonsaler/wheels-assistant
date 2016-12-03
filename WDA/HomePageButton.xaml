@@ -5,60 +5,62 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WheelsDataAssistant"
              mc:Ignorable="d" 
-             d:DesignHeight="300" 
-             d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="350" 
+             d:DesignWidth="400"
+             Margin="20,20,20,20">
+    <Grid
+        Height="350"
+        Width="400"
+        MouseLeftButtonUp="Button_Click" 
+        MouseDown="Mouse_Down" 
+        MouseEnter="Mouse_Enter" 
+        MouseLeave="Mouse_Leave">
+        
+        <Grid
+            x:Name="backgroundGrid"
+            Background="{StaticResource AppPrimaryBackgroundColorDark}"
+            Opacity=".1"
+            Height="350"
+            Width="400"/>
 
-        <Button  x:Name="button" 
-                 Width="280" 
-                 Height="220" 
-                 BorderBrush="Black" Click="Button_Click" >
+        <StackPanel
+            Height="350"
+            Width="400">
+            <Grid 
+                Height="350"
+                Width="400">
+                
+                <TextBlock 
+                    x:Name="text1" 
+                    Text="Title" 
+                    FontSize="18" 
+                    FontFamily="Calibri"
+                    Style="{StaticResource headerTextStyle}"
+                    TextAlignment="Center" 
+                    Margin="15,15,15,0" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center" 
+                    TextWrapping="Wrap" 
+                    Width="auto"  />
 
-            <StackPanel>
+                <Image
+                    HorizontalAlignment="Center"
+                    Height="180"
+                    Width="350"
+                    VerticalAlignment="Center" 
+                    Source="Resources/LLFQ Icon.png"/>
 
-                <Grid>
-                    <TextBlock 
-                                x:Name="text1" 
-                                Text="Title" 
-                                FontSize="18" 
-                                Style="{StaticResource headerTextStyle}"
-                                TextAlignment="Center" 
-                                Margin="0,8,0,169" 
-                                HorizontalAlignment="Center" 
-                                RenderTransformOrigin="1.249,-2.381" 
-                                TextWrapping="Wrap" 
-                                Width="276"  />
-
-                    <TextBlock 
-                                x:Name="text2" 
-                                Text="Desc" 
-                                TextAlignment="Center" 
-                                HorizontalAlignment="Center" 
-                                Margin="10,142,10,10" 
-                                TextWrapping="Wrap" 
-                                Width="256" />
-                    <!--  <Image Grid.Row="0" Source="Add icone here" /> -->
-                </Grid>
-            </StackPanel>
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#BDE7FC"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="Azure"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+                <TextBlock 
+                    x:Name="text2" 
+                    Text="Desc" 
+                    TextAlignment="Center" 
+                    FontFamily="Calibri"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom"
+                    Margin="15,0,15,15" 
+                    TextWrapping="Wrap" 
+                    Width="auto" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>

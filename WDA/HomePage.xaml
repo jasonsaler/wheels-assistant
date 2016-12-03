@@ -30,12 +30,30 @@
             Stretch="Fill"/>
 
         <Grid 
-            x:Name="openSpaceGrid"
-            HorizontalAlignment="Left"  
+            x:Name="pageSpaceGrid"
+            HorizontalAlignment="Stretch"  
             Margin="0,90,0,0" 
-            VerticalAlignment="Top" 
-            Height="500"
-            Width="{Binding ActualWidth, ElementName=TopBarDesign}"/>
+            VerticalAlignment="Stretch" 
+            Height="auto"
+            Width="{Binding ActualWidth, ElementName=TopBarDesign}">
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <Grid>
+                    
+                    <ItemsControl 
+                        x:Name="openSpaceGrid"
+                        Margin="80,80,510,80"
+                        HorizontalAlignment="Center"
+                        Width="450"/>
+
+                    <ItemsControl 
+                        x:Name="openSpaceGrid2"
+                        Margin="610,80,80,80"
+                        HorizontalAlignment="Center"
+                        Width="450"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
 
         <Grid 
             x:Name="menuBar"
@@ -91,14 +109,6 @@
             </Menu>
 
         </Grid>
-
-        <Grid 
-            x:Name="questionaireGrid" 
-            HorizontalAlignment="Left" 
-            Height="100" 
-            Margin="480,125,0,0" 
-            VerticalAlignment="Top" 
-            Width="100"/>
 
         <Image 
             x:Name="LetuShield" 

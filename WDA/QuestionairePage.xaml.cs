@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Office.Interop.Excel;
+using System.Text.RegularExpressions;
 using System;
 
 namespace WheelsDataAssistant
@@ -18,14 +19,14 @@ namespace WheelsDataAssistant
         string f = "records.xls";
         Questionaire theQuestionnaire;
         String m_currentQuestionType;
+        String m_filename = "";
 
         public QuestionairePage(Questionaire currentQuestionnaire)
         {
             this.theQuestionnaire = currentQuestionnaire;
             InitializeComponent();
             titlelabel.Content = currentQuestionnaire.getQuestionaireName();
-            // Add the following method to the Questionnaire class
-            //instructionslabel.Content = currentQuestionnaire.getInstructions();
+            instructionslabel.Text = "Instructions: " + currentQuestionnaire.getInstructions();
             loadQuestions();
         }
 
@@ -76,37 +77,57 @@ namespace WheelsDataAssistant
             this.NavigationService.Navigate(helpPage);
         }
 
-        private void SaveNewButton_Click(object sender, RoutedEventArgs e)
+        private Boolean saveHandler(Boolean isSaveNew)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Execl files (*.xls)|*.xls";
-            //if (saveFileDialog.ShowDialog() == true)
-                //File.WriteAllText(saveFileDialog.FileName, txtEditor.Text);
-        }
+            if (m_filename == "")
+                isSaveNew = true;
 
-        private void FinishButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(dataToFile())
+            ToastNotification progressSavedToast;
+            if (isSaveNew)
             {
-                ReportManager.GenerateIndividualReport(theQuestionnaire, @"C:\Users\jsaler\OneDrive\School Work\Software Engineering II", "Test5");
-                HomePage homePage = new HomePage();
-                this.NavigationService.Navigate(homePage);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Execl files (*.xls)|*.xls";
+                if (saveFileDialog.ShowDialog() != true)
+                {
+                    progressSavedToast = new ToastNotification("Canceled", 3, 0);
+                    progressSavedToast.Visibility = Visibility.Visible;
+                    openSpaceGrid.Children.Add(progressSavedToast);
+
+                    return false;
+                }
+
+                m_filename = saveFileDialog.FileName;
             }
-            else
+
+            if (dataToFile(isSaveNew))
             {
-                ToastNotification progressSavedToast = new ToastNotification("Could not save the responses", 7, 0);
+                string path = m_filename.Substring(0, m_filename.LastIndexOf('\\'));
+                string name = m_filename.Substring(m_filename.LastIndexOf('\\') + 1, m_filename.LastIndexOf('.') - m_filename.LastIndexOf('\\') - 1);
+
+                ReportManager.GenerateIndividualReport(theQuestionnaire, path, name);
+                progressSavedToast = new ToastNotification("Progress saved successfully", 7, 1);
                 progressSavedToast.Visibility = Visibility.Visible;
                 openSpaceGrid.Children.Add(progressSavedToast);
+
+                return true;
             }
+
+            progressSavedToast = new ToastNotification("Could not save the responses", 7, -1);
+            progressSavedToast.Visibility = Visibility.Visible;
+            openSpaceGrid.Children.Add(progressSavedToast);
+            return false;
         }
 
-        private Boolean dataToFile()
+
+        private Boolean dataToFile(Boolean isSaveNew)
         {
+            theQuestionnaire.clearDictionaryForNewData();
+
             RatingScaleQuestion temporaryRSQ = new RatingScaleQuestion();
             BlankResponseQuestion temporaryBRQ = new BlankResponseQuestion();
             QuestionControls.MultipleChoiceQuestion temporaryMCQ = new QuestionControls.MultipleChoiceQuestion();
 
-            for (int i= s_nonQuestionListItmes; i<theQuestionnaire.getNumberOfQuestions()+s_nonQuestionListItmes-1; i++)
+            for (int i = s_nonQuestionListItmes; i < theQuestionnaire.getNumberOfQuestions() + s_nonQuestionListItmes - 1; i++)
             {
                 try
                 {
@@ -142,15 +163,38 @@ namespace WheelsDataAssistant
                 else if (m_currentQuestionType == temporaryBRQ.getQuestionType())
                 {
                     BlankResponseQuestion currentQuestion = (BlankResponseQuestion)pageGrid.Items.GetItemAt(i);
-                    theQuestionnaire.UserData.Add(currentQuestion.questionTextOutput.Text, currentQuestion.responseText.Text);
+                    theQuestionnaire.UserData.Add(currentQuestion.questionTextOutput.Text, currentQuestion.getResponse());
                 }
                 else
                 {
                     QuestionControls.MultipleChoiceQuestion currentQuestion = (QuestionControls.MultipleChoiceQuestion)pageGrid.Items.GetItemAt(i);
-                    theQuestionnaire.UserData.Add(currentQuestion.getQuestionText(), currentQuestion.getChosenAnswer());
+                    theQuestionnaire.UserData.Add(currentQuestion.getQuestionText(), currentQuestion.getResponse());
                 }
             }
             return true;
+        }
+
+        private void SaveNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean isSaveNew = true;
+            saveHandler(isSaveNew);
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean isSaveNew = false;
+            saveHandler(isSaveNew);
+        }
+
+        private void FinishButton_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean isSaveNew = false;
+            if (saveHandler(isSaveNew))
+            {
+                ReportManager.GenerateIndividualReport(theQuestionnaire, @"C:\Users\jsaler\OneDrive\School Work\Software Engineering II", "Noodles");
+                HomePage homePage = new HomePage();
+                this.NavigationService.Navigate(homePage);
+            }
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
@@ -160,47 +204,6 @@ namespace WheelsDataAssistant
             {
                 HomePage homePage = new HomePage();
                 this.NavigationService.Navigate(homePage);
-            }
-        }
-
-
-        private void saveButton_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //string t = txtEditor.Text;
-            saveFileDialog.FileName = "records.xls";
-            string s = saveFileDialog.SafeFileName;
-            ClicksCount++;
-            if (ClicksCount == 1)
-            {
-                saveFileDialog.CreatePrompt = true;
-                saveFileDialog.OverwritePrompt = true;
-                saveFileDialog.DefaultExt = "xls";
-                saveFileDialog.Filter = "Execl files (*.xls)|*.xls";
-                if (saveFileDialog.ShowDialog() == true)
-                {
-                    //File.WriteAllText(saveFileDialog.FileName, txtEditor.Text);
-                }
-            }
-            else
-            {
-                try
-                {/*
-                    File.SetAttributes(s, FileAttributes.Normal);
-                    saveFileDialog.Filter = "Execl files (*.xls)|*.xls";
-                    var excelApp = new Excel.Application();
-                    excelApp.Workbooks.Open(f, 3, false, 5, Type.Missing, Type.Missing, true);
-                    Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
-                    workSheet.Cells[count, "A"] = t;
-                    count++;
-                    File.WriteAllText(saveFileDialog.FileName, txtEditor.Text);
-                    excelApp.DisplayAlerts = false;
-                    workSheet.SaveAs(f, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, true, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
-                    excelApp.Workbooks.Close();
-                    excelApp.Quit();
-                    MessageBox.Show("Saved");*/
-                }
-                catch (FileNotFoundException) { }
             }
         }
     }

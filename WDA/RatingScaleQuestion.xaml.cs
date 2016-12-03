@@ -76,10 +76,10 @@ namespace WheelsDataAssistant
                 questionNumber.IsReadOnly = true;
                 questionNumber.BorderThickness = new Thickness(0);
                 questionNumber.Text = questionLocationNumber.ToString() + ".";
+                userCommentBox.IsReadOnly = false;
                 userCommentBox.Background = new SolidColorBrush(Colors.White);
                 userCommentBox.Foreground = (Brush)Application.Current.MainWindow.FindResource("AppPrimaryBackgroundColorLight");
                 userCommentBox.Text = "Enter any necessary comments here...";
-                userCommentBox.IsReadOnly = false;
             }
         }
 
@@ -208,7 +208,7 @@ namespace WheelsDataAssistant
         {
             if (userCommentBox.Text == "Enter any necessary comments here...")
                 userCommentBox.Text = "";
-            return new QuestionResponse(RatingSlider.Value*10,  userCommentBox.Text);
+            return new QuestionResponse(RatingSlider.Value,  userCommentBox.Text);
         }
     }
 }

@@ -26,9 +26,9 @@ namespace WheelsDataAssistant.QuestionControls
         public Boolean isDeleted = false;
         public Boolean hasNaOption = false;
         public bool hasCommentOption = false;
-        private String questionText = "Are Fieros awesome?";
-        private String userComment = "Yes! Of course :D";
-        private String chosenAnswer = "Duh";
+        private String questionText = "";
+        private String userComment = "";
+        private String chosenAnswer = "No response";
         private int questionLocationNumber = 1;
         private String questionType = "multipleChoiceQuestion";
         RadioButton selectedButton;
@@ -173,8 +173,11 @@ namespace WheelsDataAssistant.QuestionControls
 
         public String getQuestionText()
         {
-            //questionText = newQuestion.Text;
-            return questionText;
+            if(questionText != null)
+                return questionText;
+
+            return "Couldn't find question";
+
         }
 
         private void SliderBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -467,9 +470,15 @@ namespace WheelsDataAssistant.QuestionControls
             }
         }
 
-        QuestionResponse getResponse()
+        public String getResponse()
         {
-            return new QuestionResponse(chosenAnswer + "; " + userCommentBox.Text);
+            if (chosenAnswer == null)
+                chosenAnswer = "No response";
+
+            if(userCommentBox.Text == null || userCommentBox.Text == "Enter any necessary comments here...")
+                return chosenAnswer;
+            else
+                return chosenAnswer + "; " + userCommentBox.Text;
         }
     }
 }

@@ -25,8 +25,8 @@ namespace WheelsDataAssistant
         public Boolean isForQuestionaire = false;
         public Boolean isDeleted = false;
         public Boolean hasNaOption = false;
-        private String questionText = "Is HyeMi your favorite friend?";
-        private String userComment = "Yes! Of course :D";
+        private String questionText = "";
+        private String userComment = "";
         private int questionLocationNumber = 1;
         private String questionType = "BlankResponseQuestion";
 
@@ -189,9 +189,12 @@ namespace WheelsDataAssistant
             }
         }
 
-        QuestionResponse getResponse()
+        public String getResponse()
         {
-            return new QuestionResponse(responseText.Text);
+            if (responseText.Text != "Enter response here...")
+                return responseText.Text;
+            else
+                return "No response";
         }
     }
 }

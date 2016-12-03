@@ -31,6 +31,15 @@ namespace WheelsDataAssistant
             activate();
         }
 
+        public HomePageButton(Questionaire questionnaire)
+        {
+            this.title0 = questionnaire.getTitle();
+            this.description0 = questionnaire.getDescription();
+            this.questionair0 = questionnaire;
+            InitializeComponent();
+            activate();
+        }
+
         public HomePageButton(String title, String description, Questionaire questionair)
         {
             this.title0 = title;
@@ -60,6 +69,26 @@ namespace WheelsDataAssistant
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             customClick();
+        }
+
+        private void Button_Click(object sender, MouseButtonEventArgs e)
+        {
+            customClick();
+        }
+
+        private void Mouse_Down(object sender, MouseButtonEventArgs e)
+        {
+            backgroundGrid.Opacity = .5;
+        }
+
+        private void Mouse_Enter(object sender, MouseEventArgs e)
+        {
+            backgroundGrid.Opacity = .3;
+        }
+
+        private void Mouse_Leave(object sender, MouseEventArgs e)
+        {
+            backgroundGrid.Opacity = .1;
         }
     }
 }
